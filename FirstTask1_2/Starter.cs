@@ -8,38 +8,38 @@ namespace FirstTask1_2
 {
     internal class Starter
     {
-        public void GetStart(int rows, int columns, int p, int[,] array, int flag, int increment)
+        public void GetStart(int rows, int columns, int firstValue, int[,] array, int flag, int increment)
         {
             if (flag == (int)Flag.ToCenter)
             {
                 int a = 1;
                 int b = 1;
                 int index = 1;
-                int first = p;
+                int first = firstValue;
                 Console.WriteLine("To Center");
                 for (int i = 0; i < columns; i++)
                 {
-                    array[0, i] = p;
-                    p++;
+                    array[0, i] = firstValue;
+                    firstValue += increment;
                     index++;
                 }
                 for (int j = 1; j < rows; j++)
                 {
-                    array[j, columns - 1] = p;
-                    p++;
+                    array[j, columns - 1] = firstValue;
+                    firstValue += increment;
                     index++;
 
                 }
                 for (int k = columns - 2; k >= 0; k--)
                 {
-                    array[rows - 1, k] = p;
-                    p++;
+                    array[rows - 1, k] = firstValue;
+                    firstValue += increment;
                     index++;
                 }
                 for (int l = rows - 2; l > 0; l--)
                 {
-                    array[l, 0] = p;
-                    p++;
+                    array[l, 0] = firstValue;
+                    firstValue += increment;
                     index++;
                 }
 
@@ -48,31 +48,31 @@ namespace FirstTask1_2
 
                     while (array[a, b + 1] == 0)
                     {
-                        array[a, b] = p;
+                        array[a, b] = firstValue;
                         b++;
-                        p++;
+                        firstValue += increment;
                         index++;
                     }
                     while (array[a + 1, b] == 0)
                     {
-                        array[a, b] = p;
+                        array[a, b] = firstValue;
                         a++;
-                        p++;
+                        firstValue += increment;
                         index++;
                     }
 
                     while (array[a, b - 1] == 0)
                     {
-                        array[a, b] = p;
+                        array[a, b] = firstValue;
                         b--;
-                        p++;
+                        firstValue += increment;
                         index++;
                     }
                     while (array[a - 1, b] == 0)
                     {
-                        array[a, b] = p;
+                        array[a, b] = firstValue;
                         a--;
-                        p++;
+                        firstValue += increment;
                         index++;
                     }
                 }
@@ -83,7 +83,7 @@ namespace FirstTask1_2
                     {
                         if (array[i, j] == 0)
                         {
-                            array[i, j] = p;
+                            array[i, j] = firstValue;
                             if (first == 0)
                                 array[0, 0] = 0;
                         }
@@ -97,63 +97,63 @@ namespace FirstTask1_2
                 Console.WriteLine("To Border");
                 int a = 1;
                 int b = 1;
-                int index = rows * columns - 1 + p;
-                p = rows * columns;
+                int index = (rows * columns - 1 ) * increment + firstValue;
+                firstValue = rows * columns;
                 for (int i = 0; i < columns; i++)
                 {
                     array[0, i] = index;
-                    p--;
-                    index--;
+                    firstValue--;
+                    index-= increment;
                 }
                 for (int j = 1; j < rows; j++)
                 {
                     array[j, columns - 1] = index;
-                    p--;
-                    index--;
+                    firstValue--;
+                    index -= increment;
                 }
                 for (int k = columns - 2; k >= 0; k--)
                 {
                     array[rows - 1, k] = index;
-                    p--;
-                    index--;
+                    firstValue--;
+                    index -= increment;
                 }
                 for (int l = rows - 2; l > 0; l--)
                 {
                     array[l, 0] = index;
-                    p--;
-                    index--;
+                    firstValue--;
+                    index -= increment;
                 }
-                while (p > 1)
+                while (firstValue > 1)
                 {
 
                     while (array[a, b + 1] == 0)
                     {
                         array[a, b] = index;
                         b++;
-                        p--;
-                        index--;
+                        firstValue--;
+                        index -= increment;
                     }
                     while (array[a + 1, b] == 0)
                     {
                         array[a, b] = index;
                         a++;
-                        p--;
-                        index--;
+                        firstValue--;
+                        index -= increment; 
                     }
 
                     while (array[a, b - 1] == 0)
                     {
                         array[a, b] = index;
                         b--;
-                        p--;
-                        index--;
+                        firstValue--;
+                        index -= increment;
                     }
                     while (array[a - 1, b] == 0)
                     {
                         array[a, b] = index;
                         a--;
-                        p--;
-                        index--;
+                        firstValue--;
+                        index -= increment;
                     }
                 }
 
