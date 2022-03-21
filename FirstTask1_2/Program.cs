@@ -9,7 +9,7 @@ namespace FirstTask1_2
     }
     public class Program
     {
-       
+
         public static void Main(string[] args)
         {
 
@@ -20,17 +20,21 @@ namespace FirstTask1_2
                 {
                     Console.WriteLine("Write rows number");
                     int rows = Int32.Parse(Console.ReadLine());
-                    
+
                     Console.WriteLine("Write columns number");
                     int columns = Int32.Parse(Console.ReadLine());
                     int[,] array = new int[rows, columns];
-                    
+
                     Console.WriteLine("Set flag: 1 - To Center, 2 - To Border");
-                    int flag = Int32.Parse(Console.ReadLine());                       
-                    
+                    int flag = Int32.Parse(Console.ReadLine());
+
                     Console.WriteLine("Write first number");
                     int first = Int32.Parse(Console.ReadLine());
-                    starter.GetStart(rows, columns, first, array, flag);
+
+                    Console.WriteLine("Write increment number");
+                    int increment = Int32.Parse(Console.ReadLine());
+
+                    starter.GetStart(rows, columns, first, array, flag, increment);
                 }
                 catch
                 {

@@ -4,11 +4,6 @@ namespace FirstTask1_1
 {
     public class Program
     {
-        enum Flag
-        {
-            ToCenter,
-            ToBorder
-        }
         public static void Main(string[] args)
         {
 

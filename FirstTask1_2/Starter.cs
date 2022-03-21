@@ -8,7 +8,7 @@ namespace FirstTask1_2
 {
     internal class Starter
     {
-        public void GetStart(int rows, int columns, int p, int[,] array, int flag)
+        public void GetStart(int rows, int columns, int p, int[,] array, int flag, int increment)
         {
             if (flag == (int)Flag.ToCenter)
             {
@@ -97,46 +97,45 @@ namespace FirstTask1_2
                 Console.WriteLine("To Border");
                 int a = 1;
                 int b = 1;
-                int index = rows * columns;
-                p = index+p;
+                int index = rows * columns - 1 + p;
+                p = rows * columns;
                 for (int i = 0; i < columns; i++)
                 {
-                    array[0, i] = p;
+                    array[0, i] = index;
                     p--;
                     index--;
                 }
                 for (int j = 1; j < rows; j++)
                 {
-                    array[j, columns - 1] = p;
+                    array[j, columns - 1] = index;
                     p--;
                     index--;
                 }
                 for (int k = columns - 2; k >= 0; k--)
                 {
-                    array[rows - 1, k] = p;
+                    array[rows - 1, k] = index;
                     p--;
                     index--;
                 }
                 for (int l = rows - 2; l > 0; l--)
                 {
-                    array[l, 0] = p;
+                    array[l, 0] = index;
                     p--;
                     index--;
                 }
-
-                while (index > 1)
+                while (p > 1)
                 {
 
                     while (array[a, b + 1] == 0)
                     {
-                        array[a, b] = p;
+                        array[a, b] = index;
                         b++;
                         p--;
                         index--;
                     }
                     while (array[a + 1, b] == 0)
                     {
-                        array[a, b] = p;
+                        array[a, b] = index;
                         a++;
                         p--;
                         index--;
@@ -144,14 +143,14 @@ namespace FirstTask1_2
 
                     while (array[a, b - 1] == 0)
                     {
-                        array[a, b] = p;
+                        array[a, b] = index;
                         b--;
                         p--;
                         index--;
                     }
                     while (array[a - 1, b] == 0)
                     {
-                        array[a, b] = p;
+                        array[a, b] = index;
                         a--;
                         p--;
                         index--;
@@ -164,13 +163,10 @@ namespace FirstTask1_2
                     for (int j = 0; j < columns; j++)
                     {
                         if (array[i, j] == 0)
-                        {
-                            array[i, j] = p;
-                            Console.Write($"{array[i, j]} \t");
-                        }
-                        Console.WriteLine("");
+                            array[i, j] = index;
+                        Console.Write($"{array[i, j]} \t");
                     }
-
+                    Console.WriteLine("");
                 }
             }
             else
