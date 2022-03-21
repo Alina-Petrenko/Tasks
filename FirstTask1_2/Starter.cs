@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -8,12 +9,14 @@ namespace FirstTask1_2
 {
     internal class Starter
     {
-        public void GetStart(int rows, int columns, int firstValue, int[,] array, int flag, int increment)
+        public string GetStart(int rows, int columns, int firstValue, int[,] array, int flag, int increment)
         {
+            Stopwatch time = new Stopwatch();
+            time.Start();
+            int internalRows = 1;
+            int internalColumns = 1;
             if (flag == (int)Flag.ToCenter)
-            {
-                int a = 1;
-                int b = 1;
+            {             
                 int index = 1;
                 int first = firstValue;
                 Console.WriteLine("To Center");
@@ -46,32 +49,32 @@ namespace FirstTask1_2
                 while (index < rows * columns)
                 {
 
-                    while (array[a, b + 1] == 0)
+                    while (array[internalRows, internalColumns + 1] == 0)
                     {
-                        array[a, b] = firstValue;
-                        b++;
+                        array[internalRows, internalColumns] = firstValue;
+                        internalColumns++;
                         firstValue += increment;
                         index++;
                     }
-                    while (array[a + 1, b] == 0)
+                    while (array[internalRows + 1, internalColumns] == 0)
                     {
-                        array[a, b] = firstValue;
-                        a++;
+                        array[internalRows, internalColumns] = firstValue;
+                        internalRows++;
                         firstValue += increment;
                         index++;
                     }
 
-                    while (array[a, b - 1] == 0)
+                    while (array[internalRows, internalColumns - 1] == 0)
                     {
-                        array[a, b] = firstValue;
-                        b--;
+                        array[internalRows, internalColumns] = firstValue;
+                        internalColumns--;
                         firstValue += increment;
                         index++;
                     }
-                    while (array[a - 1, b] == 0)
+                    while (array[internalRows - 1, internalColumns] == 0)
                     {
-                        array[a, b] = firstValue;
-                        a--;
+                        array[internalRows, internalColumns] = firstValue;
+                        internalRows--;
                         firstValue += increment;
                         index++;
                     }
@@ -95,8 +98,6 @@ namespace FirstTask1_2
             else if (flag == (int)Flag.ToBorder)
             {
                 Console.WriteLine("To Border");
-                int a = 1;
-                int b = 1;
                 int index = (rows * columns - 1 ) * increment + firstValue;
                 firstValue = rows * columns;
                 for (int i = 0; i < columns; i++)
@@ -126,32 +127,32 @@ namespace FirstTask1_2
                 while (firstValue > 1)
                 {
 
-                    while (array[a, b + 1] == 0)
+                    while (array[internalRows, internalColumns + 1] == 0)
                     {
-                        array[a, b] = index;
-                        b++;
+                        array[internalRows, internalColumns] = index;
+                        internalColumns++;
                         firstValue--;
                         index -= increment;
                     }
-                    while (array[a + 1, b] == 0)
+                    while (array[internalRows + 1, internalColumns] == 0)
                     {
-                        array[a, b] = index;
-                        a++;
+                        array[internalRows, internalColumns] = index;
+                        internalRows++;
                         firstValue--;
                         index -= increment; 
                     }
 
-                    while (array[a, b - 1] == 0)
+                    while (array[internalRows, internalColumns - 1] == 0)
                     {
-                        array[a, b] = index;
-                        b--;
+                        array[internalRows, internalColumns] = index;
+                        internalColumns--;
                         firstValue--;
                         index -= increment;
                     }
-                    while (array[a - 1, b] == 0)
+                    while (array[internalRows - 1, internalColumns] == 0)
                     {
-                        array[a, b] = index;
-                        a--;
+                        array[internalRows, internalColumns] = index;
+                        internalRows--;
                         firstValue--;
                         index -= increment;
                     }
@@ -174,6 +175,11 @@ namespace FirstTask1_2
                 Console.WriteLine("Wrong flag number, try again");
 
             }
+
+            time.Stop();
+            TimeSpan timeSpan = time.Elapsed;
+            string elapsedTime = timeSpan.ToString(@"mm\:ss\.FFFFFF");
+            return elapsedTime;
         }
     }
 }
