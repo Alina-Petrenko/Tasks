@@ -1,7 +1,4 @@
-﻿using FirstTask1_2;
-using System.Diagnostics;
-
-namespace FirstTask1_2
+﻿namespace FirstTask1_3
 {
     enum Flag
     {
@@ -10,7 +7,6 @@ namespace FirstTask1_2
     }
     public class Program
     {
-
         public static void Main(string[] args)
         {
             Starter starter = new Starter();
@@ -25,7 +21,11 @@ namespace FirstTask1_2
                     int columns = Int32.Parse(Console.ReadLine());
                     if (columns != rows)
                     {
-                        int[,] array = new int[rows, columns];
+                        int[][] array = new int[rows][];
+                        for (int i = 0; i < rows; i++)
+                        {
+                            array[i] = new int[columns];
+                        }
 
                         Console.WriteLine("Write first number");
                         int firstValue = Int32.Parse(Console.ReadLine());
@@ -42,12 +42,13 @@ namespace FirstTask1_2
                     else
                     {
                         Console.WriteLine("It should be a rectangle, not a square!");
-                    }               
+                    }
                 }
                 catch
                 {
                     Console.WriteLine("Oops! It's seems like you wrote incorrect value! Try again");
-                }               
+                }
+
             }
         }
     }
