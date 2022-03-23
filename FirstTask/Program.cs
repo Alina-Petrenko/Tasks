@@ -4,11 +4,6 @@ namespace FirstTask1_1
 {
     public class Program
     {
-        enum Flag
-        {
-            ToCenter,
-            ToBorder
-        }
         public static void Main(string[] args)
         {
 
@@ -22,10 +17,10 @@ namespace FirstTask1_1
                     Console.WriteLine("Write columns number");
                     int columns = Int32.Parse(Console.ReadLine());
                     int[,] array = new int[rows, columns];
-                    int toBorder = 0;
-                    int toCenter = rows * columns - 1;
-                    starter.GetStartToCenter(rows, columns, toBorder, array);
-                    starter.GetStartToBorder(rows, columns, toCenter, array);
+                    int firstToBorder = 0;
+                    int firstToCenter = rows * columns - 1;
+                    starter.GetStartToCenter(rows, columns, firstToBorder, array);
+                    starter.GetStartToBorder(rows, columns, firstToCenter, array);
                 }
                 catch
                 {

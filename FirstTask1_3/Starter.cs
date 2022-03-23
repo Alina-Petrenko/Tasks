@@ -1,47 +1,43 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Diagnostics;
 
-namespace FirstTask1_2
+namespace FirstTask1_3
 {
     internal class Starter
     {
-        public string GetStart(int rows, int columns, int firstValue, int[,] array, int flag, int increment)
+        internal string GetStart(int rows, int columns, int firstValue, int[][] array, int flag, int increment)
         {
             Stopwatch time = new Stopwatch();
             time.Start();
             int internalRows = 1;
             int internalColumns = 1;
             if (flag == (int)Flag.ToCenter)
-            {             
+            {
                 int index = 1;
                 int first = firstValue;
                 Console.WriteLine("To Center");
                 for (int i = 0; i < columns; i++)
                 {
-                    array[0, i] = firstValue;
+
+                    array[0][i] = firstValue;
                     firstValue += increment;
                     index++;
                 }
                 for (int j = 1; j < rows; j++)
                 {
-                    array[j, columns - 1] = firstValue;
+                    array[j][columns - 1] = firstValue;
                     firstValue += increment;
                     index++;
 
                 }
                 for (int k = columns - 2; k >= 0; k--)
                 {
-                    array[rows - 1, k] = firstValue;
+                    array[rows - 1][k] = firstValue;
                     firstValue += increment;
                     index++;
                 }
                 for (int l = rows - 2; l > 0; l--)
                 {
-                    array[l, 0] = firstValue;
+                    array[l][0] = firstValue;
                     firstValue += increment;
                     index++;
                 }
@@ -49,31 +45,31 @@ namespace FirstTask1_2
                 while (index < rows * columns)
                 {
 
-                    while (array[internalRows, internalColumns + 1] == 0)
+                    while (array[internalRows][internalColumns + 1] == 0)
                     {
-                        array[internalRows, internalColumns] = firstValue;
+                        array[internalRows][internalColumns] = firstValue;
                         internalColumns++;
                         firstValue += increment;
                         index++;
                     }
-                    while (array[internalRows + 1, internalColumns] == 0)
+                    while (array[internalRows + 1][internalColumns] == 0)
                     {
-                        array[internalRows, internalColumns] = firstValue;
+                        array[internalRows][internalColumns] = firstValue;
                         internalRows++;
                         firstValue += increment;
                         index++;
                     }
 
-                    while (array[internalRows, internalColumns - 1] == 0)
+                    while (array[internalRows][internalColumns - 1] == 0)
                     {
-                        array[internalRows, internalColumns] = firstValue;
+                        array[internalRows][internalColumns] = firstValue;
                         internalColumns--;
                         firstValue += increment;
                         index++;
                     }
-                    while (array[internalRows - 1, internalColumns] == 0)
+                    while (array[internalRows - 1][internalColumns] == 0)
                     {
-                        array[internalRows, internalColumns] = firstValue;
+                        array[internalRows][internalColumns] = firstValue;
                         internalRows--;
                         firstValue += increment;
                         index++;
@@ -84,13 +80,13 @@ namespace FirstTask1_2
                 {
                     for (int j = 0; j < columns; j++)
                     {
-                        if (array[i, j] == 0)
+                        if (array[i][j] == 0)
                         {
-                            array[i, j] = firstValue;
+                            array[i][j] = firstValue;
                             if (first == 0)
-                                array[0, 0] = 0;
+                                array[0][0] = 0;
                         }
-                        Console.Write($"{array[i, j]} \t");
+                        Console.Write($"{array[i][j]} \t");
                     }
                     Console.WriteLine("");
                 }
@@ -98,60 +94,60 @@ namespace FirstTask1_2
             else if (flag == (int)Flag.ToBorder)
             {
                 Console.WriteLine("To Border");
-                int index = (rows * columns - 1 ) * increment + firstValue;
+                int index = (rows * columns - 1) * increment + firstValue;
                 firstValue = rows * columns;
                 for (int i = 0; i < columns; i++)
                 {
-                    array[0, i] = index;
+                    array[0][i] = index;
                     firstValue--;
-                    index-= increment;
+                    index -= increment;
                 }
                 for (int j = 1; j < rows; j++)
                 {
-                    array[j, columns - 1] = index;
+                    array[j][columns - 1] = index;
                     firstValue--;
                     index -= increment;
                 }
                 for (int k = columns - 2; k >= 0; k--)
                 {
-                    array[rows - 1, k] = index;
+                    array[rows - 1][k] = index;
                     firstValue--;
                     index -= increment;
                 }
                 for (int l = rows - 2; l > 0; l--)
                 {
-                    array[l, 0] = index;
+                    array[l][0] = index;
                     firstValue--;
                     index -= increment;
                 }
                 while (firstValue > 1)
                 {
 
-                    while (array[internalRows, internalColumns + 1] == 0)
+                    while (array[internalRows][internalColumns + 1] == 0)
                     {
-                        array[internalRows, internalColumns] = index;
+                        array[internalRows][internalColumns] = index;
                         internalColumns++;
                         firstValue--;
                         index -= increment;
                     }
-                    while (array[internalRows + 1, internalColumns] == 0)
+                    while (array[internalRows + 1][internalColumns] == 0)
                     {
-                        array[internalRows, internalColumns] = index;
+                        array[internalRows][internalColumns] = index;
                         internalRows++;
                         firstValue--;
-                        index -= increment; 
+                        index -= increment;
                     }
 
-                    while (array[internalRows, internalColumns - 1] == 0)
+                    while (array[internalRows][internalColumns - 1] == 0)
                     {
-                        array[internalRows, internalColumns] = index;
+                        array[internalRows][internalColumns] = index;
                         internalColumns--;
                         firstValue--;
                         index -= increment;
                     }
-                    while (array[internalRows - 1, internalColumns] == 0)
+                    while (array[internalRows - 1][internalColumns] == 0)
                     {
-                        array[internalRows, internalColumns] = index;
+                        array[internalRows][internalColumns] = index;
                         internalRows--;
                         firstValue--;
                         index -= increment;
@@ -163,9 +159,9 @@ namespace FirstTask1_2
                 {
                     for (int j = 0; j < columns; j++)
                     {
-                        if (array[i, j] == 0)
-                            array[i, j] = index;
-                        Console.Write($"{array[i, j]} \t");
+                        if (array[i][j] == 0)
+                            array[i][j] = index;
+                        Console.Write($"{array[i][j]} \t");
                     }
                     Console.WriteLine("");
                 }
@@ -183,4 +179,3 @@ namespace FirstTask1_2
         }
     }
 }
-

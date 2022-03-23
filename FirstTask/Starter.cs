@@ -8,68 +8,68 @@ namespace FirstTask1_1
 {
     internal class Starter
     {
-        public void GetStartToCenter(int rows, int columns, int p, int[,] array)
+        public void GetStartToCenter(int rows, int columns, int firstValue, int[,] array)
         {
-            int a = 1;
-            int b = 1;
+            int internalRows = 1;
+            int internalColumns = 1;
             int index = 1;
             Console.WriteLine("To Center");
 
             for (int i = 0; i < columns; i++)
             {
-                array[0, i] = p;
-                p++;
+                array[0, i] = firstValue;
+                firstValue++;
                 index++;
             }
             for (int j = 1; j < rows; j++)
             {
-                array[j, columns - 1] = p;
-                p++;
+                array[j, columns - 1] = firstValue;
+                firstValue++;
                 index++;
             }
             for (int k = columns - 2; k >= 0; k--)
             {
-                array[rows - 1, k] = p;
-                p++;
+                array[rows - 1, k] = firstValue;
+                firstValue++;
                 index++;
             }
             for (int l = rows - 2; l > 0; l--)
             {
-                array[l, 0] = p;
-                p++;
+                array[l, 0] = firstValue;
+                firstValue++;
                 index++;
             }
 
             while (index < rows * columns)
             {
 
-                while (array[a, b + 1] == 0)
+                while (array[internalRows, internalColumns + 1] == 0)
                 {
-                    array[a, b] = p;
-                    b++;
-                    p++;
+                    array[internalRows, internalColumns] = firstValue;
+                    internalColumns++;
+                    firstValue++;
                     index++;
                 }
-                while (array[a + 1, b] == 0)
+                while (array[internalRows + 1, internalColumns] == 0)
                 {
-                    array[a, b] = p;
-                    a++;
-                    p++;
+                    array[internalRows, internalColumns] = firstValue;
+                    internalRows++;
+                    firstValue++;
                     index++;
                 }
 
-                while (array[a, b - 1] == 0)
+                while (array[internalRows, internalColumns - 1] == 0)
                 {
-                    array[a, b] = p;
-                    b--;
-                    p++;
+                    array[internalRows, internalColumns] = firstValue;
+                    internalColumns--;
+                    firstValue++;
                     index++;
                 }
-                while (array[a - 1, b] == 0)
+                while (array[internalRows - 1, internalColumns] == 0)
                 {
-                    array[a, b] = p;
-                    a--;
-                    p++;
+                    array[internalRows, internalColumns] = firstValue;
+                    internalRows--;
+                    firstValue++;
                     index++;
                 }
             }
@@ -80,7 +80,7 @@ namespace FirstTask1_1
                 {
                     if (array[i, j] == 0)
                     {
-                        array[i, j] = p;
+                        array[i, j] = firstValue;
                         array[0, 0] = 0;
                     }
                     Console.Write($"{array[i, j]} \t");
@@ -88,7 +88,7 @@ namespace FirstTask1_1
                 Console.WriteLine("");
             }
         }
-        public void GetStartToBorder(int rows, int columns, int p, int[,] array)
+        public void GetStartToBorder(int rows, int columns, int firstValue, int[,] array)
         {
             Console.WriteLine("To Border");
 
@@ -99,64 +99,64 @@ namespace FirstTask1_1
                     array[i, j] = 0;
                 }
             }
-            int a = 1;
-            int b = 1;
+            int internalRows = 1;
+            int internalColumns = 1;
             int index = rows * columns;
             for (int i = 0; i < columns; i++)
             {
-                array[0, i] = p;
-                p--;
+                array[0, i] = firstValue;
+                firstValue--;
                 index--;
             }
             for (int j = 1; j < rows; j++)
             {
-                array[j, columns - 1] = p;
-                p--;
+                array[j, columns - 1] = firstValue;
+                firstValue--;
                 index--;
             }
             for (int k = columns - 2; k >= 0; k--)
             {
-                array[rows - 1, k] = p;
-                p--;
+                array[rows - 1, k] = firstValue;
+                firstValue--;
                 index--;
             }
             for (int l = rows - 2; l > 0; l--)
             {
-                array[l, 0] = p;
-                p--;
+                array[l, 0] = firstValue;
+                firstValue--;
                 index--;
             }
 
             while (index > 1)
             {
 
-                while (array[a, b + 1] == 0)
+                while (array[internalRows, internalColumns + 1] == 0)
                 {
-                    array[a, b] = p;
-                    b++;
-                    p--;
+                    array[internalRows, internalColumns] = firstValue;
+                    internalColumns++;
+                    firstValue--;
                     index--;
                 }
-                while (array[a + 1, b] == 0)
+                while (array[internalRows + 1, internalColumns] == 0)
                 {
-                    array[a, b] = p;
-                    a++;
-                    p--;
+                    array[internalRows, internalColumns] = firstValue;
+                    internalRows++;
+                    firstValue--;
                     index--;
                 }
 
-                while (array[a, b - 1] == 0)
+                while (array[internalRows, internalColumns - 1] == 0)
                 {
-                    array[a, b] = p;
-                    b--;
-                    p--;
+                    array[internalRows, internalColumns] = firstValue;
+                    internalColumns--;
+                    firstValue--;
                     index--;
                 }
-                while (array[a - 1, b] == 0)
+                while (array[internalRows - 1, internalColumns] == 0)
                 {
-                    array[a, b] = p;
-                    a--;
-                    p--;
+                    array[internalRows, internalColumns] = firstValue;
+                    internalRows--;
+                    firstValue--;
                     index--;
                 }
             }
@@ -167,7 +167,7 @@ namespace FirstTask1_1
                 for (int j = 0; j < columns; j++)
                 {
                     if (array[i, j] == 0)
-                        array[i, j] = p;
+                        array[i, j] = firstValue;
                     Console.Write($"{array[i, j]} \t");
                 }
                 Console.WriteLine("");
