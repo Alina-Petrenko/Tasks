@@ -1,4 +1,5 @@
 ﻿using FirstTask1_2;
+using System;
 using System.Diagnostics;
 
 namespace FirstTask1_2

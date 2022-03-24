@@ -1,4 +1,6 @@
-﻿namespace FirstTask1_3
+﻿using System;
+
+namespace FirstTask1_3
 {
     enum Flag
     {
