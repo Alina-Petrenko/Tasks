@@ -1,19 +1,26 @@
 ﻿using FirstTask1_2;
 using System;
+// TODO: Always remove unused usings
 using System.Diagnostics;
 
 namespace FirstTask1_2
 {
+    // TODO: Name Bypass is better
+    [Flags]
     enum Flag
     {
+        // TODO: FromBorderToCenter - better
         ToCenter = 1,
-        ToBorder
+        // TODO: Better to identify all values in enum, if you start to do it.
+        ToBorder = 2
     }
     public class Program
     {
-
-        public static void Main(string[] args)
+        // TODO: if we don`t use arguments we can mark them as "_" or just remove them
+        public static void Main()
         {
+            // TODO: Name of class does not fit the purpose of class
+            // Better to name Filler, ArrayFiller for example
             Starter starter = new Starter();
             while (true)
             {
@@ -42,6 +49,7 @@ namespace FirstTask1_2
                     }
                     else
                     {
+                        // TODO: Square is a subclass of rectangle.
                         Console.WriteLine("It should be a rectangle, not a square!");
                     }               
                 }

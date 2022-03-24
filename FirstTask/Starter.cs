@@ -6,10 +6,24 @@ using System.Threading.Tasks;
 
 namespace FirstTask1_1
 {
+    // TODO: always need summary. What is the purpose of this class.
     internal class Starter
     {
+        // TODO: always need summary
+        /// <summary>
+        /// Fills <paramref name="array"/> by elements starting from <paramref name="firstValue"/>.  
+        /// </summary>
+        /// <param name="rows">Count of rows in array.</param>
+        /// <param name="columns">SECOND</param>
+        /// <param name="firstValue">THIRD</param>
+        /// <param name="array"></param>
         public void GetStartToCenter(int rows, int columns, int firstValue, int[,] array)
         {
+            //TODO:  We don`t need rows and columns
+            array.GetLength(0);
+            array.GetLength(1);
+
+
             int internalRows = 1;
             int internalColumns = 1;
             int index = 1;
@@ -40,6 +54,7 @@ namespace FirstTask1_1
                 index++;
             }
 
+            // TODO: Why we cannot use it for external rows and columns?
             while (index < rows * columns)
             {
 
@@ -91,7 +106,7 @@ namespace FirstTask1_1
         public void GetStartToBorder(int rows, int columns, int firstValue, int[,] array)
         {
             Console.WriteLine("To Border");
-
+            
             for (int i = 0; i < rows; i++)
             {
                 for (int j = 0; j < columns; j++)

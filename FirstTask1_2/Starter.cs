@@ -15,11 +15,15 @@ namespace FirstTask1_2
             time.Start();
             int internalRows = 1;
             int internalColumns = 1;
+
+            // TODO: Better to use switch for flag
+            // https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/statements/selection-statements
             if (flag == (int)Flag.ToCenter)
             {             
                 int index = 1;
                 int first = firstValue;
                 Console.WriteLine("To Center");
+                // TODO: Could be moved inside another method
                 for (int i = 0; i < columns; i++)
                 {
                     array[0, i] = firstValue;
@@ -158,7 +162,8 @@ namespace FirstTask1_2
                     }
                 }
 
-
+                // TODO: Could be moved in another method
+                // PrintArray for example
                 for (int i = 0; i < rows; i++)
                 {
                     for (int j = 0; j < columns; j++)
@@ -179,6 +184,7 @@ namespace FirstTask1_2
             time.Stop();
             TimeSpan timeSpan = time.Elapsed;
             string elapsedTime = timeSpan.ToString(@"mm\:ss\.FFFFFF");
+            // TODO: You can return TimeSpan from the method and construct result string outside of the method.
             return elapsedTime;
         }
     }
