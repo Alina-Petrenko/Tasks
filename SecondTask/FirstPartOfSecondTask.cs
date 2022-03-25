@@ -14,13 +14,14 @@ namespace SecondTask
         /// <param name="rows">Number of rows</param>
         /// <param name="columns">Number of columns</param>
         /// <returns>Returns the time spent on the calculation</returns>
-        internal TimeSpan GetSum(int rows, int columns)
+        internal TimeSpan GetSum(int [,] array)
         {
             Console.WriteLine("First Part Output");
             Stopwatch time = new Stopwatch();
             time.Start();
             Random random = new Random();
-            int[,] array = new int[rows, columns];
+            var rows = array.GetLength(0);
+            var columns = array.GetLength(1);
             for (int i = 0; i < rows; i++)
             {
                 for (int j = 0; j < columns; j++)

@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace SecondTask
 {
@@ -22,20 +18,35 @@ namespace SecondTask
             Console.WriteLine("");
             FirstPartOfSecondTask firstPartOfSecondTask = new FirstPartOfSecondTask();
             SecondPartOfSecondTask secondPartOfSecondTask = new SecondPartOfSecondTask();
+            ThirdPartOfSecondTask thirdPartOfSecondTask = new ThirdPartOfSecondTask();
+            int[,] twoDimensionalArray = new int[rows, columns];
+            int[][] jaggedArray = new int[rows][];
+            for (int i = 0; i < rows; i++)
+            {
+                jaggedArray[i] = new int[columns];
+            }
             ArrayOutput arrayOutput = new ArrayOutput();
 
-            var elapsedTimeFromFirstTask = firstPartOfSecondTask.GetSum(rows, columns);
-            var elapsedFirstTaskTime = elapsedTimeFromFirstTask.ToString(@"mm\:ss\.FFFFFF");
+            var elapsedTimeFromFirstTask = firstPartOfSecondTask.GetSum(twoDimensionalArray);
+            var elapsedFirstTPartTime = elapsedTimeFromFirstTask.ToString(@"mm\:ss\.FFFFFF");
 
-            var resultSecondPartOfSecondTask = secondPartOfSecondTask.GetSum(rows, columns, direction);
+            var resultSecondPartOfSecondTask = secondPartOfSecondTask.GetSum(twoDimensionalArray, direction);
             if (direction == DirectionToSum.SumByRows)
                 arrayOutput.GetArrayToConsoleByRows(resultSecondPartOfSecondTask.Item1);
             else
                 arrayOutput.GetArrayToConsoleByColumns(resultSecondPartOfSecondTask.Item1);
-            var elapsedSceondTaskTime = resultSecondPartOfSecondTask.Item2.ToString(@"mm\:ss\.FFFFFF");
+            var elapsedSecondPartTime = resultSecondPartOfSecondTask.Item2.ToString(@"mm\:ss\.FFFFFF");
 
-            Console.WriteLine($"Elapsed time from first task: {elapsedFirstTaskTime}");
-            Console.WriteLine($"Elapsed time from second task: {elapsedSceondTaskTime}");
+            var resultThirdPartOfSecondTask = thirdPartOfSecondTask.GetSum(jaggedArray, direction, columns, rows);
+            if (direction == DirectionToSum.SumByRows)
+                arrayOutput.GetJaggedArrayToConsoleByRows(resultThirdPartOfSecondTask.Item1);
+            //else
+            //    arrayOutput.GetJaggedArrayToConsoleByColumns(resultThirdPartOfSecondTask.Item1);
+            var elapsedThirdPartTime = resultThirdPartOfSecondTask.Item2.ToString(@"mm\:ss\.FFFFFF");
+
+            Console.WriteLine($"Elapsed time from first task: {elapsedFirstTPartTime}");
+            Console.WriteLine($"Elapsed time from second task: {elapsedSecondPartTime}");
+            Console.WriteLine($"Elapsed time from third task: {elapsedThirdPartTime}");
 
         }
     }

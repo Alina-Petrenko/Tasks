@@ -6,7 +6,7 @@ namespace SecondTask
     /// <summary>
     /// Fills array by random numbers, and sums by rows and columns. Second Part of Second Task
     /// </summary>
-    internal class SecondPartOfSecondTask
+    internal class ThirdPartOfSecondTask
     {
         /// <summary>
         /// Fills array by random values, calls methods according to direction
@@ -15,51 +15,56 @@ namespace SecondTask
         /// <param name="columns"></param>
         /// <param name="direction">How need to sum, by rows or by columns</param>
         /// <returns>Returns tuple of values, first ia array, second is elapsed time in TimeSpan type </returns>
-        internal (int[,], TimeSpan) GetSum(int [,] array, DirectionToSum direction)
+        internal (int[][], TimeSpan) GetSum(int[][] array, DirectionToSum direction, int columns, int rows)
         {
             Console.WriteLine("Second Part Output");
             Stopwatch time = new Stopwatch();
             time.Start();
             Random random = new Random();
-            var rows = array.GetLength(0);
-            var columns = array.GetLength(1);
             for (int i = 0; i < rows; i++)
             {
                 for (int j = 0; j < columns; j++)
                 {
-                    array[i, j] = random.Next(1, 5);
-                    Console.Write($"{array[i, j]}\t");
+                    array[i][j] = random.Next(1, 5);
+                    Console.Write($"{array[i][j]}\t");
                 }
                 Console.WriteLine("");
             }
-            int[,] sum;
+            int[][] sum = new int[rows][];
+            for (int i = 0; i < rows; i++)
+            {
+                array[i] = new int[columns];
+            }
             Console.WriteLine("");
             if (direction == DirectionToSum.SumByRows)
                 sum = SumByRows(array, columns, rows);
-            else
-                sum = SumByColumns(array, columns, rows);
+            //else
+            //    sum = SumByColumns(array, columns, rows);
             time.Stop();
             TimeSpan timeSpan = time.Elapsed;
-            (int[,], TimeSpan) result = (sum, timeSpan);
+            (int[][], TimeSpan) result = (sum, timeSpan);
             return result;
         }
         /// <summary>
         /// Sums by rows
         /// </summary>
         /// <param name="array"></param>
-        private int[,] SumByRows(int[,] array, int columns, int rows)
+        private int[][] SumByRows(int[][] array, int columns, int rows)
         {
-
             Console.WriteLine("Sum by rows");
-            int[,] secondArray = new int[1, columns];
+            int[][] secondArray = new int[1][];
             for (int i = 0; i < columns; i++)
             {
+                array[i] = new int[columns];
+            }
+            for (int i = 0; i < rows; i++)
+            {
                 int temp = 0;
-                for (int j = 0; j < rows; j++)
+                for (int j = 0; j < columns; j++)
                 {
-                    temp += array[j, i];
+                    temp += array[i][j];
                 }
-                secondArray[0, i] = temp; ;
+                secondArray[i][0] = temp;
             }
             return secondArray;
         }
@@ -67,21 +72,26 @@ namespace SecondTask
         /// Sums by columns
         /// </summary>
         /// <param name="array"></param>
-        private int[,] SumByColumns(int[,] array, int columns, int rows)
-        {
-            Console.WriteLine("Sum by columns");
-            int[,] secondArray = new int[rows, 1];
-            for (int i = 0; i < rows; i++)
-            {
-                int temp = 0;
-                for (int j = 0; j < columns; j++)
-                {
-                    temp += array[i, j];
-                }
-                secondArray[i, 0] = temp;
-            }
-            return secondArray;
-        }
+        //private int[][] SumByColumns(int[][] array, int columns, int rows)
+        //{
+        //    Console.WriteLine("Sum by columns");
+        //    int[][] secondArray = new int[rows][];
+        //    for (int i = 0; i < columns; i++)
+        //    {
+        //        array[i] = new int[columns];
+        //    }
+        //    for (int i = 0; i < rows; i++)
+        //    {
+        //        int temp = 0;
+        //        for (int j = 0; j < columns; j++)
+        //        {
+        //            temp += array[i][j];
+        //        }
+        //        secondArray[i][0] = temp;
+        //    }
+        //    return secondArray;
+        //}
     }
 }
+
 
