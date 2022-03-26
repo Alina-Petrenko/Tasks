@@ -43,26 +43,26 @@ namespace SecondTask
         }
         internal void GetJaggedArrayToConsoleByRows(int[][] array)
         {
-            var rows = array.GetLength(0);
-            var columns = array.GetLength(1);
+            var rows = array.Length;
+            var columns = array[0].Length;
             for (int i = 0; i < rows; i++)
             {
                 for (int j = 0; j < columns; j++)
                 {
-                    Console.Write($"{array[i][j]}\t");
+                    Console.WriteLine($"{array[i][j]}\t");
                 }
             }
             Console.WriteLine("");
         }
         internal void GetJaggedArrayToConsoleByColumns(int[][] array)
         {
-            var rows = array.GetLength(0);
-            var columns = array[1].GetLength(1);
+            var rows = array.Length;
+            var columns = array[0].Length;
             for (int i = 0; i < rows; i++)
             {
                 for (int j = 0; j < columns; j++)
                 {
-                    Console.WriteLine($"{array[i][j]}\t");
+                    Console.Write($"{array[i][j]}\t");
                 }
             }
             Console.WriteLine("");

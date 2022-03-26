@@ -40,8 +40,8 @@ namespace SecondTask
             var resultThirdPartOfSecondTask = thirdPartOfSecondTask.GetSum(jaggedArray, direction, columns, rows);
             if (direction == DirectionToSum.SumByRows)
                 arrayOutput.GetJaggedArrayToConsoleByRows(resultThirdPartOfSecondTask.Item1);
-            //else
-            //    arrayOutput.GetJaggedArrayToConsoleByColumns(resultThirdPartOfSecondTask.Item1);
+            else
+                arrayOutput.GetJaggedArrayToConsoleByColumns(resultThirdPartOfSecondTask.Item1);
             var elapsedThirdPartTime = resultThirdPartOfSecondTask.Item2.ToString(@"mm\:ss\.FFFFFF");
 
             Console.WriteLine($"Elapsed time from first task: {elapsedFirstTPartTime}");

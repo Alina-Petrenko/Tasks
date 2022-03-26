@@ -4,8 +4,8 @@ namespace SecondTask
 {
     enum DirectionToSum
     {
-        SumByRows,
-        SumByColums
+        SumByRows = 1,
+        SumByColums = 2
     }
     /// <summary>
     /// Starts the project
@@ -47,7 +47,7 @@ namespace SecondTask
                 var success = true;
                 foreach (int i in Enum.GetValues(typeof(DirectionToSum)))
                 {
-                    success = Enum.IsDefined(typeof(DirectionToSum), value - 1);
+                    success = Enum.IsDefined(typeof(DirectionToSum), value);
                     if (success == false)
                     {
                         Console.WriteLine("Looks like wrong value, try again");
