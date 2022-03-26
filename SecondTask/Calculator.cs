@@ -44,6 +44,7 @@ namespace SecondTask
                 arrayOutput.GetJaggedArrayToConsoleByColumns(resultThirdPartOfSecondTask.Item1);
             var elapsedThirdPartTime = resultThirdPartOfSecondTask.Item2.ToString(@"mm\:ss\.FFFFFF");
 
+            Console.WriteLine("_________________________________");
             Console.WriteLine($"Elapsed time from first task: {elapsedFirstTPartTime}");
             Console.WriteLine($"Elapsed time from second task: {elapsedSecondPartTime}");
             Console.WriteLine($"Elapsed time from third task: {elapsedThirdPartTime}");

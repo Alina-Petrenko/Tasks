@@ -17,6 +17,7 @@ namespace SecondTask
         /// <returns>Returns tuple of values, first ia array, second is elapsed time in TimeSpan type </returns>
         internal (int[][], TimeSpan) GetSum(int[][] array, DirectionToSum direction, int columns, int rows)
         {
+            Console.WriteLine("_________________________________");
             Console.WriteLine("Third Part Output");
             Stopwatch time = new Stopwatch();
             time.Start();
@@ -76,16 +77,13 @@ namespace SecondTask
         {
             Console.WriteLine("Sum by columns");
             int[][] secondArray = new int[1][];
-            for (int i = 0; i < columns; i++)
-            {
-                secondArray[i] = new int[1];
-            }
+            secondArray[0] = new int[columns];
             for (int i = 0; i < columns; i++)
             {
                 int temp = 0;
                 for (int j = 0; j < rows; j++)
                 {
-                    temp += array[i][j];
+                    temp += array[j][i];
                 }
                 secondArray[0][i] = temp;
             }

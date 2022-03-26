@@ -17,6 +17,7 @@ namespace SecondTask
         /// <returns>Returns tuple of values, first ia array, second is elapsed time in TimeSpan type </returns>
         internal (int[,], TimeSpan) GetSum(int [,] array, DirectionToSum direction)
         {
+            Console.WriteLine("_________________________________");
             Console.WriteLine("Second Part Output");
             Stopwatch time = new Stopwatch();
             time.Start();

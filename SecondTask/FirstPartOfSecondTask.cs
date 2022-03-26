@@ -16,6 +16,7 @@ namespace SecondTask
         /// <returns>Returns the time spent on the calculation</returns>
         internal TimeSpan GetSum(int [,] array)
         {
+            Console.WriteLine("_________________________________");
             Console.WriteLine("First Part Output");
             Stopwatch time = new Stopwatch();
             time.Start();

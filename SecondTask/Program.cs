@@ -27,6 +27,7 @@ namespace SecondTask
                 if (!resultOfParsing)
                 {
                     Console.WriteLine("Looks like wrong value, try again");
+                    Console.WriteLine("_________________________________");
                     continue;
                 }
                 Console.Write("Rows: ");
@@ -34,6 +35,7 @@ namespace SecondTask
                 if (!resultOfParsing)
                 {
                     Console.WriteLine("Looks like wrong value, try again");
+                    Console.WriteLine("_________________________________");
                     continue;
                 }
                 Console.Write("Sum by Rows = 1, Sum by columns = 2: ");
@@ -42,22 +44,25 @@ namespace SecondTask
                 if (!resultOfParsing)
                 {
                     Console.WriteLine("Looks like wrong value, try again");
-                    break;
+                    Console.WriteLine("_________________________________");
+                    continue;
                 }
+
                 var success = true;
                 foreach (int i in Enum.GetValues(typeof(DirectionToSum)))
                 {
-                    success = Enum.IsDefined(typeof(DirectionToSum), value);
-                    if (success == false)
+                    if (Enum.IsDefined(typeof(DirectionToSum), value) == false)
                     {
                         Console.WriteLine("Looks like wrong value, try again");
+                        success = false;
                         break;
                     }
                 }
-                //if (success == false)
-                //{
-                //    break;
-                //}
+                if (success == false)
+                {
+                    Console.WriteLine("_________________________________");
+                    continue;
+                }
                 DirectionToSum direction = (DirectionToSum)Enum.Parse(typeof(DirectionToSum), inputedDirection);
                 calculator.GetResult(rows,columns,direction);
 
@@ -67,7 +72,8 @@ namespace SecondTask
                 {
                     appIsRunning = false;
                 }
-                Console.WriteLine("_________________________________");
+                else
+                    Console.Clear();
             }
         }
     }
