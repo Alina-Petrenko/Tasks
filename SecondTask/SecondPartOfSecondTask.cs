@@ -49,17 +49,16 @@ namespace SecondTask
         /// <param name="array"></param>
         private int[,] SumByRows(int[,] array, int columns, int rows)
         {
-
             Console.WriteLine("Sum by rows");
-            int[,] secondArray = new int[1, columns];
-            for (int i = 0; i < columns; i++)
+            int[,] secondArray = new int[rows, 1];
+            for (int i = 0; i < rows; i++)
             {
                 int temp = 0;
-                for (int j = 0; j < rows; j++)
+                for (int j = 0; j < columns; j++)
                 {
-                    temp += array[j, i];
+                    temp += array[i, j];
                 }
-                secondArray[0, i] = temp; ;
+                secondArray[i, 0] = temp;
             }
             return secondArray;
         }
@@ -70,15 +69,15 @@ namespace SecondTask
         private int[,] SumByColumns(int[,] array, int columns, int rows)
         {
             Console.WriteLine("Sum by columns");
-            int[,] secondArray = new int[rows, 1];
-            for (int i = 0; i < rows; i++)
+            int[,] secondArray = new int[1, columns];
+            for (int i = 0; i < columns; i++)
             {
                 int temp = 0;
-                for (int j = 0; j < columns; j++)
+                for (int j = 0; j < rows; j++)
                 {
-                    temp += array[i, j];
+                    temp += array[j, i];
                 }
-                secondArray[i, 0] = temp;
+                secondArray[0, i] = temp; ;
             }
             return secondArray;
         }

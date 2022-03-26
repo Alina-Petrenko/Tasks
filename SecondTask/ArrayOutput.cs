@@ -11,24 +11,7 @@ namespace SecondTask
         /// Method outputs array to console by Rows
         /// </summary>
         /// <param name="array"></param>
-        internal void GetArrayToConsoleByRows(int[,]array)
-        {
-            var rows = array.GetLength(0);
-            var columns = array.GetLength(1);
-            for (int i = 0; i < rows; i++)
-            {
-                for (int j = 0; j < columns; j++)
-                {
-                    Console.Write($"{array[i, j]}\t");
-                }
-            }
-            Console.WriteLine("");
-        }
-        /// <summary>
-        /// Method outputs array to console by Columns
-        /// </summary>
-        /// <param name="array"></param>
-        internal void GetArrayToConsoleByColumns(int[,] array)
+        internal void GetArrayToConsoleByColumns(int[,]array)
         {
             var rows = array.GetLength(0);
             var columns = array.GetLength(1);
@@ -37,6 +20,23 @@ namespace SecondTask
                 for (int j = 0; j < columns; j++)
                 {
                     Console.WriteLine($"{array[i, j]}\t");
+                }
+            }
+            Console.WriteLine("");
+        }
+        /// <summary>
+        /// Method outputs array to console by Columns
+        /// </summary>
+        /// <param name="array"></param>
+        internal void GetArrayToConsoleByRows(int[,] array)
+        {
+            var rows = array.GetLength(0);
+            var columns = array.GetLength(1);
+            for (int i = 0; i < rows; i++)
+            {
+                for (int j = 0; j < columns; j++)
+                {
+                    Console.Write($"{array[i, j]}\t");
                 }
             }
             Console.WriteLine("");

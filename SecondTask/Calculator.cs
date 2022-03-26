@@ -32,9 +32,9 @@ namespace SecondTask
 
             var resultSecondPartOfSecondTask = secondPartOfSecondTask.GetSum(twoDimensionalArray, direction);
             if (direction == DirectionToSum.SumByRows)
-                arrayOutput.GetArrayToConsoleByRows(resultSecondPartOfSecondTask.Item1);
-            else
                 arrayOutput.GetArrayToConsoleByColumns(resultSecondPartOfSecondTask.Item1);
+            else
+                arrayOutput.GetArrayToConsoleByRows(resultSecondPartOfSecondTask.Item1);
             var elapsedSecondPartTime = resultSecondPartOfSecondTask.Item2.ToString(@"mm\:ss\.FFFFFF");
 
             var resultThirdPartOfSecondTask = thirdPartOfSecondTask.GetSum(jaggedArray, direction, columns, rows);

@@ -47,28 +47,6 @@ namespace SecondTask
             var rows = array.GetLength(0);
             var columns = array.GetLength(1);
             Console.WriteLine("Sum by rows");
-            int[,] secondArray = new int[1, columns];
-            for (int i = 0; i < columns; i++)
-            {
-                var temp = 0;
-                for (int j = 0; j < rows; j++)
-                {
-                    temp += array[j, i];
-                }
-                secondArray[0, i] = temp; ;
-            }
-            arrayOutput.GetArrayToConsoleByRows(secondArray);
-            Console.WriteLine("");
-        }
-        /// <summary>
-        /// Sums by columns, write result to console
-        /// </summary>
-        /// <param name="array"></param>
-        private void SumByColumns(int[,] array)
-        {
-            var rows = array.GetLength(0);
-            var columns = array.GetLength(1);
-            Console.WriteLine("Sum by columns");
             int[,] secondArray = new int[rows, 1];
             for (int i = 0; i < rows; i++)
             {
@@ -80,6 +58,28 @@ namespace SecondTask
                 secondArray[i, 0] = temp;
             }
             arrayOutput.GetArrayToConsoleByColumns(secondArray);
+            Console.WriteLine("");
+        }
+        /// <summary>
+        /// Sums by columns, write result to console
+        /// </summary>
+        /// <param name="array"></param>
+        private void SumByColumns(int[,] array)
+        {
+            var rows = array.GetLength(0);
+            var columns = array.GetLength(1);
+            Console.WriteLine("Sum by columns");
+            int[,] secondArray = new int[1, columns];
+            for (int i = 0; i < columns; i++)
+            {
+                var temp = 0;
+                for (int j = 0; j < rows; j++)
+                {
+                    temp += array[j, i];
+                }
+                secondArray[0, i] = temp; ;
+            }
+            arrayOutput.GetArrayToConsoleByRows(secondArray);
             Console.WriteLine("");
         }
     }
