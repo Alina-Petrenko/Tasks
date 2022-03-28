@@ -6,12 +6,16 @@ using System.Threading.Tasks;
 
 namespace SecondTask
 {
+    // TODO: typo issue: "necessary" instead of "nessesary"
     /// <summary>
     /// Calculates nessesary values according to direction or operation
     /// </summary>
     internal class Calculator
     {
+        // TODO: method return a value. Describe it in section <returns></returns>.
+        // TODO: if you use <param> then need to fill it. In your case: "Array to operate" or "Input array".
         /// <summary>
+        /// TODO: this method does not write result into console
         /// Sums two-dimensional array by rows, write result to console
         /// </summary>
         /// <param name="array"></param>
@@ -19,10 +23,13 @@ namespace SecondTask
         {
             var rows = array.GetLength(0);
             var columns = array.GetLength(1);
+            // TODO: use new lines to split logical parts of the methods (input, parsing values, calculations, output etc).
+            // TODO: it is related to all code.
             Console.WriteLine("Sum by rows");
             int[,] secondArray = new int[rows, 1];
             for (int i = 0; i < rows; i++)
             {
+                // TODO: better name is "rowSum"
                 var temp = 0;
                 for (int j = 0; j < columns; j++)
                 {
@@ -45,6 +52,7 @@ namespace SecondTask
             int[,] secondArray = new int[1, columns];
             for (int i = 0; i < columns; i++)
             {
+                // TODO: better name is "columnSum"
                 var temp = 0;
                 for (int j = 0; j < rows; j++)
                 {
@@ -61,6 +69,7 @@ namespace SecondTask
         /// <param name="array"></param>
         internal int[][] SumByRows(int[][] array, int columns, int rows)
         {
+            // TODO: There is array.GetLength() method. You don`t need columns and rows input parameters
             Console.WriteLine("Sum by rows");
             int[][] secondArray = new int[rows][];
             for (int i = 0; i < rows; i++)

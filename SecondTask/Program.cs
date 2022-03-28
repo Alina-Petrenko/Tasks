@@ -2,6 +2,7 @@
 
 namespace SecondTask
 {
+    // TODO: Better to create separate file Enums.cs to store enums
     enum DirectionToSum
     {
         SumByRows = 1,
@@ -18,8 +19,10 @@ namespace SecondTask
     internal class Program
     {
         /// <summary>
+        /// TODO: "Entry point into application"
         /// Starts the projects, gets values from user
         /// </summary>
+        /// TODO: parameter could be removed. Main will work without it.
         /// <param name="_"></param>
         static void Main(string[] _)
         {

@@ -2,18 +2,26 @@
 using System.Diagnostics;
 namespace SecondTask
 {
+    // TODO: "Provides ability to fill various arrays."
     /// <summary>
     /// Fills array by random numbers, and call methods for sum by rows or columns
     /// </summary>
+    // TODO: use public identifier. It is rare cases when need to use internal identifier. Read more about it in web or in "CLR via C#".
     internal class Filling
     {
+        // TODO: split parts of class using regions (Fields, Constructors, Properties, Methods)
+        // TODO: Good practice is explicitly indicate visibility of fields and methods. It should be written as:
+        // private Stopwatch _time = new Stopwatch();
+        // same for random. 
         Stopwatch time = new Stopwatch();
         Random random = new Random();
+        // TODO: use constructor to provide related classes without which current class could not work
         Calculator calculator = new Calculator();
         /// <summary>
         /// Calls methods for filling two-dimensional arrays and calls methods for sum by rows or columns, counts the time spent
         /// </summary>
         /// <param name="array">Array of values</param>
+        /// TODO: "identifies summing type of items in array"
         /// <param name="direction">Direction, how to Sum, by columns or by rows</param>
         /// <returns>Returns tuple with two-dimensional array and TimeSpan value</returns>
         internal (int[,], TimeSpan) GetFirstPartSum(int[,] array, DirectionToSum direction)
@@ -24,6 +32,8 @@ namespace SecondTask
             array = GetRandom(array);
             int[,] sum;
             Console.WriteLine("");
+            // TODO: like an option write like this
+            //  sum = direction == DirectionToSum.SumByRows ? calculator.SumByRows(array) : calculator.SumByColumns(array);
             if (direction == DirectionToSum.SumByRows)
                 sum = calculator.SumByRows(array);
             else
@@ -62,6 +72,7 @@ namespace SecondTask
             (int[][], TimeSpan) result = (sum, timeSpan);
             return result;
         }
+        // TODO: make a new line separation between methods
         /// <summary>
         /// Calls methods for filling two-dimensional arrays and calls methods for sum by rows or columns, counts the time spent
         /// </summary>
