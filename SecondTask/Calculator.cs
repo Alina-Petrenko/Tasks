@@ -1,90 +1,21 @@
 ﻿using System;
-using System.Diagnostics;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
 namespace SecondTask
 {
     /// <summary>
-    /// Fills array by random numbers, and sums by rows and columns
+    /// Calculates nessesary values according to direction or operation
     /// </summary>
     internal class Calculator
     {
         /// <summary>
-        /// Fills array by random numbers, call methods for sum by rows or columns, counts the time spent
-        /// </summary>
-        /// <param name="rows">Number of rows</param>
-        /// <param name="columns">Number of columns</param>
-        /// <returns>Returns the time spent on the calculation</returns>
-        internal (int[,], TimeSpan) GetFirstPartSum(int[,] array, DirectionToSum direction)
-        {
-            Console.WriteLine("_________________________________");
-            Console.WriteLine("First Part Output");
-            Stopwatch time = new Stopwatch();
-            time.Start();
-            Random random = new Random();
-            var rows = array.GetLength(0);
-            var columns = array.GetLength(1);
-            for (int i = 0; i < rows; i++)
-            {
-                for (int j = 0; j < columns; j++)
-                {
-                    array[i, j] = random.Next(1, 5);
-                    Console.Write($"{array[i, j]}\t");
-                }
-                Console.WriteLine("");
-            }
-            int[,] sum;
-            Console.WriteLine("");
-            if (direction == DirectionToSum.SumByRows)
-                sum = SumByRows(array);
-            else
-                sum = SumByColumns(array);
-            time.Stop();
-            TimeSpan timeSpan = time.Elapsed;
-            (int[,], TimeSpan) result = (sum, timeSpan);
-            return result;
-        }
-        /// <summary>
-        /// Fills jagged array by random values, calls methods according to direction
-        /// </summary>
-        /// <param name="rows"></param>
-        /// <param name="columns"></param>
-        /// <param name="direction">How need to sum, by rows or by columns</param>
-        /// <returns>Returns tuple of values, first ia array, second is elapsed time in TimeSpan type </returns>
-        internal (int[][], TimeSpan) GetSecondPartSum(int[][] array, DirectionToSum direction, int columns, int rows)
-        {
-            Console.WriteLine("_________________________________");
-            Console.WriteLine("Second Part Output");
-            Stopwatch time = new Stopwatch();
-            time.Start();
-            Random random = new Random();
-            for (int i = 0; i < rows; i++)
-            {
-                for (int j = 0; j < columns; j++)
-                {
-                    array[i][j] = random.Next(1, 5);
-                    Console.Write($"{array[i][j]}\t");
-                }
-                Console.WriteLine("");
-            }
-            int[][] sum = new int[rows][];
-            for (int i = 0; i < rows; i++)
-            {
-                sum[i] = new int[1];
-            }
-            Console.WriteLine("");
-            if (direction == DirectionToSum.SumByRows)
-                sum = SumByRows(array, columns, rows);
-            else
-                sum = SumByColumns(array, columns, rows);
-            time.Stop();
-            TimeSpan timeSpan = time.Elapsed;
-            (int[][], TimeSpan) result = (sum, timeSpan);
-            return result;
-        }
-        /// <summary>
-        /// Sums by rows, write result to console
+        /// Sums two-dimensional array by rows, write result to console
         /// </summary>
         /// <param name="array"></param>
-        private int[,] SumByRows(int[,] array)
+        internal int[,] SumByRows(int[,] array)
         {
             var rows = array.GetLength(0);
             var columns = array.GetLength(1);
@@ -101,11 +32,12 @@ namespace SecondTask
             }
             return secondArray;
         }
+
         /// <summary>
-        /// Sums by columns, write result to console
+        /// Sums two-dimensional array by columns, write result to console
         /// </summary>
         /// <param name="array"></param>
-        private int[,] SumByColumns(int[,] array)
+        internal int[,] SumByColumns(int[,] array)
         {
             var rows = array.GetLength(0);
             var columns = array.GetLength(1);
@@ -122,12 +54,12 @@ namespace SecondTask
             }
             return secondArray;
         }
- 
+
         /// <summary>
         /// Sums jagged Array by rows
         /// </summary>
         /// <param name="array"></param>
-        private int[][] SumByRows(int[][] array, int columns, int rows)
+        internal int[][] SumByRows(int[][] array, int columns, int rows)
         {
             Console.WriteLine("Sum by rows");
             int[][] secondArray = new int[rows][];
@@ -150,7 +82,7 @@ namespace SecondTask
         /// Sums jagged Array by columns
         /// </summary>
         /// <param name="array"></param>
-        private int[][] SumByColumns(int[][] array, int columns, int rows)
+        internal int[][] SumByColumns(int[][] array, int columns, int rows)
         {
             Console.WriteLine("Sum by columns");
             int[][] secondArray = new int[1][];
@@ -165,6 +97,104 @@ namespace SecondTask
                 secondArray[0][i] = temp;
             }
             return secondArray;
+        }
+        /// <summary>
+        /// Sums Diagonals above secondary diagonal
+        /// </summary>
+        /// <param name="array"></param>
+        /// <returns>Returns array of diaginals sums</returns>
+        internal int[,] GetArrayAboveDiagonal(int[,] array)
+        {
+            var size = array.GetLength(0);
+            int[,] secondArray = new int[size - 1, 1];
+            for (int i = 0; i < size - 1; i++)
+            {
+                var index = 0;
+                var temp = 0;
+                for (int j = size - 2 - i; j >= 0; j--)
+                {
+                    temp += array[index, j];
+                    index++;
+                }
+                secondArray[size - 2 - i, 0] = temp;
+            }
+            return secondArray;
+        }
+        /// <summary>
+        /// Sums Diagonals under secondary diagonal
+        /// </summary>
+        /// <param name="array"></param>
+        /// <returns>Returns array of diagonals sums</returns>
+        internal int[,] GetArrayUnderDiagonal(int[,] array)
+        {
+            var size = array.GetLength(0);
+            int[,] secondArray = new int[size - 1, 1];
+            for (int i = 0; i < size - 1; i++)
+            {
+                var index = 1 + i;
+                var temp = 0;
+                for (int j = size - 1; j > 0 + i; j--)
+                {
+                    temp += array[index, j];
+                    index++;
+                }
+                secondArray[i, 0] = temp;
+            }
+            return secondArray;
+        }
+        /// <summary>
+        /// Sums secondary diagonal values
+        /// </summary>
+        /// <param name="array"></param>
+        /// <returns>Returns array of diagonals sums</returns>
+        internal int GetsecondaryDiagonalSum(int[,] array)
+        {
+            var size = array.GetLength(0);
+            var secondaryDiagonalSum = 0;
+            var index = 0;
+            for (int i = size - 1; i >= 0; i--)
+            {
+                secondaryDiagonalSum += array[i, index];
+                index++;
+            }
+            return secondaryDiagonalSum;
+        }
+        /// <summary>
+        /// Subtraction of values ​​of parallel diagonals with secondary
+        /// </summary>
+        /// <param name="sumAboveDiagonal"></param>
+        /// <param name="sumUnderDiagonal"></param>
+        /// <param name="secondaryDiagonalSum"></param>
+        /// <returns>Returns array of subtract result</returns>
+        internal int[,] GetSubtraction(int[,] sumAboveDiagonal, int[,] sumUnderDiagonal, int secondaryDiagonalSum)
+        {
+            var size = sumAboveDiagonal.GetLength(0);
+            int[,] resultArray = new int[size, 2];
+            for (int i = 0; i < size; i++)
+            {
+                resultArray[i, 0] = secondaryDiagonalSum - sumAboveDiagonal[i, 0];
+                resultArray[i, 1] = secondaryDiagonalSum - sumUnderDiagonal[i, 0];
+            }
+            return resultArray;
+        }
+        /// <summary>
+        /// Sum of values ​​of parallel diagonals with secondary
+        /// </summary>
+        /// <param name="sumAboveDiagonal"></param>
+        /// <param name="sumUnderDiagonal"></param>
+        /// <param name="secondaryDiagonalSum"></param>
+        /// <returns>Returns array of sum result</returns>
+        internal int[,] GetSum(int[,] sumAboveDiagonal, int[,] sumUnderDiagonal, int secondaryDiagonalSum)
+        {
+            var size = sumAboveDiagonal.GetLength(0);
+            int[,] resultArray = new int[size, 2];
+            Console.WriteLine($"Secondary diagonal = {secondaryDiagonalSum}");
+            for (int i = 0; i < size; i++)
+            {
+                resultArray[i, 0] = sumAboveDiagonal[i, 0] + secondaryDiagonalSum;
+                resultArray[i, 1] = sumUnderDiagonal[i, 0] + secondaryDiagonalSum;
+            }
+            return resultArray;
         }
     }
 }

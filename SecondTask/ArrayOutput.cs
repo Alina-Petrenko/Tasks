@@ -8,7 +8,7 @@ namespace SecondTask
     internal class ArrayOutput
     {
         /// <summary>
-        /// Method outputs array to console by Rows
+        /// Method outputs two-dimensional array to console by Rows
         /// </summary>
         /// <param name="array"></param>
         internal void GetArrayToConsoleByRows(int[,]array)
@@ -25,7 +25,7 @@ namespace SecondTask
             Console.WriteLine("");
         }
         /// <summary>
-        /// Method outputs array to console by Columns
+        /// Method outputs two-dimensional array to console by Columns
         /// </summary>
         /// <param name="array"></param>
         internal void GetArrayToConsoleByColumns(int[,] array)
@@ -38,9 +38,14 @@ namespace SecondTask
                 {
                     Console.Write($"{array[i, j]}\t");
                 }
+                Console.WriteLine();
             }
             Console.WriteLine("");
         }
+        /// <summary>
+        /// Method outputs jagged array to console by Rows
+        /// </summary>
+        /// <param name="array"></param>
         internal void GetJaggedArrayToConsoleByRows(int[][] array)
         {
             var rows = array.Length;
@@ -54,6 +59,10 @@ namespace SecondTask
             }
             Console.WriteLine("");
         }
+        /// <summary>
+        /// Method outputs jagged array to console by Rows
+        /// </summary>
+        /// <param name="array"></param>
         internal void GetJaggedArrayToConsoleByColumns(int[][] array)
         {
             var rows = array.Length;

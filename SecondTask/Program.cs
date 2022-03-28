@@ -7,6 +7,11 @@ namespace SecondTask
         SumByRows = 1,
         SumByColums = 2
     }
+    enum OperationOnNumbers
+    {
+        Sum = 1,
+        Subtraction = 2
+    }
     /// <summary>
     /// Starts the project
     /// </summary>
@@ -18,24 +23,22 @@ namespace SecondTask
         /// <param name="_"></param>
         static void Main(string[] _)
         {
-            ResultOutput calculator = new ResultOutput();
-            bool appIsRunning = true;
+            var calculator = new ResultOutput();
+            var appIsRunning = true;
             while (appIsRunning)
             {
                 Console.Write("Columns: ");
                 var resultOfParsing = int.TryParse(Console.ReadLine(), out var columns);
                 if (!resultOfParsing)
                 {
-                    Console.WriteLine("Looks like wrong value, try again");
-                    Console.WriteLine("_________________________________");
+                    Program.GetErrorMessage();
                     continue;
                 }
                 Console.Write("Rows: ");
                 resultOfParsing = int.TryParse(Console.ReadLine(), out var rows);
                 if (!resultOfParsing)
                 {
-                    Console.WriteLine("Looks like wrong value, try again");
-                    Console.WriteLine("_________________________________");
+                    Program.GetErrorMessage();
                     continue;
                 }
                 Console.Write("Sum by Rows = 1, Sum by columns = 2: ");
@@ -43,8 +46,7 @@ namespace SecondTask
                 resultOfParsing = int.TryParse(inputedDirection, out var value);
                 if (!resultOfParsing)
                 {
-                    Console.WriteLine("Looks like wrong value, try again");
-                    Console.WriteLine("_________________________________");
+                    Program.GetErrorMessage();
                     continue;
                 }
 
@@ -53,18 +55,48 @@ namespace SecondTask
                 {
                     if (Enum.IsDefined(typeof(DirectionToSum), value) == false)
                     {
-                        Console.WriteLine("Looks like wrong value, try again");
+                        Program.GetErrorMessage();
                         success = false;
                         break;
                     }
                 }
                 if (success == false)
                 {
-                    Console.WriteLine("_________________________________");
                     continue;
                 }
                 DirectionToSum direction = (DirectionToSum)Enum.Parse(typeof(DirectionToSum), inputedDirection);
-                calculator.GetResult(rows,columns,direction);
+
+                Console.Write("Size of square: ");
+                resultOfParsing = int.TryParse(Console.ReadLine(), out var sizeOfSquare);
+                if (!resultOfParsing)
+                {
+                    Program.GetErrorMessage();
+                    continue;
+                }
+                Console.Write("Sum Diagonals values = 1, Subtract Diagonals values = 2: ");
+                var inputedOperation = Console.ReadLine();
+                resultOfParsing = int.TryParse(inputedOperation, out var operation);
+                if (!resultOfParsing)
+                {
+                    Program.GetErrorMessage();
+                    continue;
+                }
+                foreach (int i in Enum.GetValues(typeof(OperationOnNumbers)))
+                {
+                    if (Enum.IsDefined(typeof(OperationOnNumbers), operation) == false)
+                    {
+                        Program.GetErrorMessage();
+                        success = false;
+                        break;
+                    }
+                }
+                if (success == false)
+                {
+                    continue;
+                }
+                OperationOnNumbers operationOnNumbers = (OperationOnNumbers)Enum.Parse(typeof(OperationOnNumbers), inputedOperation);
+
+                calculator.GetResult(rows, columns, direction, operationOnNumbers, sizeOfSquare);
 
                 Console.WriteLine("Press 'N/n' if you want to exit, otherwise the application will restart");
                 var answer = Console.ReadLine();
@@ -75,6 +107,14 @@ namespace SecondTask
                 else
                     Console.Clear();
             }
+        }
+        /// <summary>
+        /// Writes an error message, if value was wrong
+        /// </summary>
+        private static void GetErrorMessage ()
+        {
+            Console.WriteLine("Looks like wrong value, try again");
+            Console.WriteLine("_________________________________");
         }
     }
 }
