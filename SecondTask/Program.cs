@@ -18,7 +18,7 @@ namespace SecondTask
         /// <param name="_"></param>
         static void Main(string[] _)
         {
-            Calculator calculator = new Calculator();
+            ResultOutput calculator = new ResultOutput();
             bool appIsRunning = true;
             while (appIsRunning)
             {

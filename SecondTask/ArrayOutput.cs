@@ -11,7 +11,7 @@ namespace SecondTask
         /// Method outputs array to console by Rows
         /// </summary>
         /// <param name="array"></param>
-        internal void GetArrayToConsoleByColumns(int[,]array)
+        internal void GetArrayToConsoleByRows(int[,]array)
         {
             var rows = array.GetLength(0);
             var columns = array.GetLength(1);
@@ -28,7 +28,7 @@ namespace SecondTask
         /// Method outputs array to console by Columns
         /// </summary>
         /// <param name="array"></param>
-        internal void GetArrayToConsoleByRows(int[,] array)
+        internal void GetArrayToConsoleByColumns(int[,] array)
         {
             var rows = array.GetLength(0);
             var columns = array.GetLength(1);
