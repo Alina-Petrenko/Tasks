@@ -5,7 +5,7 @@ namespace FourthTask
     /// <summary>
     /// Provides a mechanism for getting values from the user
     /// </summary>
-    internal class InputValue
+    public class InputValue
     {
         private OutputResult _outputResult = new OutputResult();
         private Filling _filling = new Filling();

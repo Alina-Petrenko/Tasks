@@ -19,7 +19,7 @@ namespace FourthTask
         /// <param name="searchedValue">Searched value</param>
         /// <param name="firstIndex">First index of array</param>
         /// <param name="lastIndex">Last index  of array</param>
-        /// <returns>Returns tuple, first value is required index, second value is elapsed time in TimeSpan type</returns>
+        /// <returns>Returns tuple with required index and spent time for calculations</returns>
         public (int, TimeSpan) GetBinarySearchInOneDimensionalDecimalArray(decimal[] array, decimal searchedValue, int firstIndex, int lastIndex)
         {
             _oneDimentionalTime.Start();
@@ -58,7 +58,7 @@ namespace FourthTask
         /// <param name="searchedValue">Searched value</param>
         /// <param name="firstIndex">First index of array</param>
         /// <param name="lastIndex">Last index  of array</param>
-        /// <returns>Returns tuple, first value is required index, second value is elapsed time in TimeSpan type</returns>
+        /// <returns>Returns tuple with required index and spent time for calculations</returns>
         public (int, TimeSpan) GetBinarySearchInOneDimensionalCharArray(char[] array, char searchedValue, int firstIndex, int lastIndex)
         {
             var middleIndex = (firstIndex + lastIndex) / 2;
@@ -94,7 +94,7 @@ namespace FourthTask
         /// <param name="searchedValue">Searched value</param>
         /// <param name="firstIndex">First index of array</param>
         /// <param name="lastIndex">Last index  of array</param>
-        /// <returns>Returns tuple, first value is required row index, second value is required column index, third value is elapsed time in TimeSpan type</returns>
+        /// <returns>Returns tuple with two required indices and spent time for calculations</returns>
         public (int, int, TimeSpan) GetBinarySearchInTwoDimensionalDecimalArray(decimal[,] array, decimal searchedValue, int firstIndex, int lastIndex)
         {
             _twoDimentionalTime.Start();
@@ -167,7 +167,7 @@ namespace FourthTask
         /// <param name="searchedValue">Searched value</param>
         /// <param name="firstIndex">First index of array</param>
         /// <param name="lastIndex">Last index  of array</param>
-        /// <returns>Returns tuple, first value is required row index, second value is required column index, third value is elapsed time in TimeSpan type</returns>
+        /// <returns>Returns tuple with two required indices and spent time for calculations</returns>
 
         public (int, int, TimeSpan) GetBinarySearchInTwoDimensionalCharArray(char[,] array, char searchedValue, int firstIndex, int lastIndex)
         {

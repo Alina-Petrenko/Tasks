@@ -3,7 +3,7 @@
     /// <summary>
     /// Starts the project
     /// </summary>
-    internal class Program
+    public class Program
     {
         /// <summary>
         /// Entry point into application

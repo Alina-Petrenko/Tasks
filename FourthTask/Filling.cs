@@ -6,14 +6,14 @@ namespace FourthTask
     /// <summary>
     /// Provides ability to fill various arrays by random numbers
     /// </summary>
-    internal class Filling
+    public class Filling
     {
         private Random _random = new Random();
         /// <summary>
         /// Fills one dimensional array by random decimal numbers
         /// </summary>
         /// <param name="size">Size of array</param>
-        /// <returns>Returns one dimensional array with random decimal numbers</returns>
+        /// <returns>Returns one dimensional array with random numbers</returns>
         public decimal[] GetRandomDecimalOneDimensionalArray(int size)
         {
             decimal[] array = new decimal[size];
@@ -34,7 +34,7 @@ namespace FourthTask
         /// Fills one dimensional array by random char numbers
         /// </summary>
         /// <param name="size">Size of array</param>
-        /// <returns>Returns one dimensional array with random char numbers</returns>
+        /// <returns>Returns one dimensional array with random numbers</returns>
         public char[] GetRandomCharOneDimensionalArray(int size)
         {
             char[] array = new char[size];
@@ -56,7 +56,7 @@ namespace FourthTask
         /// </summary>
         /// <param name="rows">Rows in array</param>
         /// <param name="columns">Columns in array</param>
-        /// <returns>Returns two dimensional array with random decimal numbers</returns>
+        /// <returns>Returns two dimensional array with random numbers</returns>
         public decimal[,] GetRandomDecimalTwoDimensionalArray(int rows, int columns)
         {
             decimal[,] array = new decimal[rows, columns];
@@ -85,7 +85,7 @@ namespace FourthTask
         /// </summary>
         /// <param name="rows">Rows in array</param>
         /// <param name="columns">Columns in array</param>
-        /// <returns>Returns two dimensional array with random char numbers</returns>
+        /// <returns>Returns two dimensional array with random numbers</returns>
         public char[,] GetRandomCharTwoDimensionalArray(int rows, int columns)
         {
             char[,] array = new char[rows, columns];
@@ -113,7 +113,7 @@ namespace FourthTask
         /// Sorts ascending two dimensional decimal array
         /// </summary>
         /// <param name="array">Inputed two dimensional decimal array</param>
-        /// <returns>Returns sorted ascending two dimensionals decimal array</returns>
+        /// <returns>Returns sorted ascending two dimensional array</returns>
         private decimal[,] GetSortDecimalTwoDemensionalArray(decimal[,] array)
         {
             var rows = array.GetLength(0);
@@ -142,7 +142,7 @@ namespace FourthTask
         /// Sorts ascending two dimensional char array
         /// </summary>
         /// <param name="array">Inputed two dimensional char array</param>
-        /// <returns>Returns sorted ascending two dimensionals char array</returns>
+        /// <returns>Returns sorted ascending two dimensional array</returns>
         private char[,] GetSortCharTwoDemensionalArray(char[,] array)
         {
             var rows = array.GetLength(0);

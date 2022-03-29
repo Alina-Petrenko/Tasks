@@ -6,7 +6,7 @@ namespace FourthTask
     /// <summary>
     /// Provide method to Output results to console
     /// </summary>
-    internal class OutputResult
+    public class OutputResult
     {
         private BinarySearch _binarySearch = new BinarySearch();
 
