@@ -5,7 +5,7 @@ namespace FirstTask1_3
     enum Flag
     {
         ToCenter = 1,
-        ToBorder
+        ToBorder = 2
     }
     public class Program
     {
