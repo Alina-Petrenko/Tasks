@@ -36,15 +36,17 @@ namespace SecondTask
             var elapsedFirstPartTime = resultFirstPartOfSecondTask.Item2.ToString(@"mm\:ss\.FFFFFF");
 
             var resultSecondPartOfSecondTask = filling.GetSecondPartSum(jaggedArray, direction, columns, rows);
+
             if (direction == DirectionToSum.SumByRows)
                 arrayOutput.GetJaggedArrayToConsoleByRows(resultSecondPartOfSecondTask.Item1);
             else
                 arrayOutput.GetJaggedArrayToConsoleByColumns(resultSecondPartOfSecondTask.Item1);
             var elapsedSecondPartTime = resultSecondPartOfSecondTask.Item2.ToString(@"mm\:ss\.FFFFFF");
 
-            var resultThirdPartOfSecondTask = filling.GetThirdPartSum(squareArray, operationOnNumbers);
-            arrayOutput.GetArrayToConsoleByColumns(resultThirdPartOfSecondTask.Item1);
-            var elapsedThirdPartTime = resultThirdPartOfSecondTask.Item2.ToString(@"mm\:ss\.FFFFFF");
+            // TODO: you can deconstruct tuple.
+            var (sumArray, timeSpan) = filling.GetThirdPartSum(squareArray, operationOnNumbers);
+            arrayOutput.GetArrayToConsoleByColumns(sumArray);
+            var elapsedThirdPartTime = timeSpan.ToString(@"mm\:ss\.FFFFFF");
 
             Console.WriteLine("_________________________________");
             Console.WriteLine($"Elapsed time from first task: {elapsedFirstPartTime}");

@@ -115,6 +115,7 @@ namespace SecondTask
         internal int[,] GetArrayAboveDiagonal(int[,] array)
         {
             var size = array.GetLength(0);
+            // TODO: Why do you need 2-dimensional array?
             int[,] secondArray = new int[size - 1, 1];
             for (int i = 0; i < size - 1; i++)
             {

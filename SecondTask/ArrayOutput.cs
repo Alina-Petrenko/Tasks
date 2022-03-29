@@ -28,6 +28,7 @@ namespace SecondTask
         /// Method outputs two-dimensional array to console by Columns
         /// </summary>
         /// <param name="array"></param>
+        // TODO: what is the difference with GetArrayToConsoleByRows() method?
         internal void GetArrayToConsoleByColumns(int[,] array)
         {
             var rows = array.GetLength(0);
@@ -63,6 +64,7 @@ namespace SecondTask
         /// Method outputs jagged array to console by Rows
         /// </summary>
         /// <param name="array"></param>
+        // TODO: what is the difference with GetJaggedArrayToConsoleByRows() method?
         internal void GetJaggedArrayToConsoleByColumns(int[][] array)
         {
             var rows = array.Length;

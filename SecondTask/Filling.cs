@@ -23,6 +23,8 @@ namespace SecondTask
         /// <param name="array">Array of values</param>
         /// TODO: "identifies summing type of items in array"
         /// <param name="direction">Direction, how to Sum, by columns or by rows</param>
+        /// TODO: In <returns> section not need to write about type of return values.
+        /// TODO: "<returns>Returns tuple with array of sums and spent time for calculations</returns>"
         /// <returns>Returns tuple with two-dimensional array and TimeSpan value</returns>
         internal (int[,], TimeSpan) GetFirstPartSum(int[,] array, DirectionToSum direction)
         {
@@ -91,8 +93,12 @@ namespace SecondTask
             var newSize = sumAboveDiagonal.GetLength(0);
             int[,] sum = new int[newSize, 2];
             Console.WriteLine("");
+            // TODO: task was about secondary diagonal of array.
+            // TODO: calculation is right, but text is wrong.
             Console.WriteLine("Parallel Diagonals Sums from left-top to right-down");
+            // TODO: "First column is a sum above secondary diagonal, second - under secondary diagonal."
             Console.WriteLine("Left row is above side Diagonal, right is under");
+            //TODO: GetSubtraction and GetSum is a similar methods. Difference only in operation. It could be 1 method.
             if (operationOfNumbers == OperationOnNumbers.Sum)
                 sum = calculator.GetSum(sumAboveDiagonal, sumUnderDiagonal, sideDiagonalSum);
             else

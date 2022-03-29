@@ -31,6 +31,8 @@ namespace SecondTask
             while (appIsRunning)
             {
                 Console.Write("Columns: ");
+                // TODO: if we enter negative number, we will receive OverflowException.
+                // TODO: if we enter zero, we will receive IndexOutOfRangeException for jagged array
                 var resultOfParsing = int.TryParse(Console.ReadLine(), out var columns);
                 if (!resultOfParsing)
                 {
@@ -45,6 +47,7 @@ namespace SecondTask
                     continue;
                 }
                 Console.Write("Sum by Rows = 1, Sum by columns = 2: ");
+                // TODO: "inputDirection"
                 var inputedDirection = Console.ReadLine();
                 resultOfParsing = int.TryParse(inputedDirection, out var value);
                 if (!resultOfParsing)
@@ -53,9 +56,13 @@ namespace SecondTask
                     continue;
                 }
 
+                // TODO: why do we need new variable? Why we cannot use "resultOfParsing"?
                 var success = true;
+                // TODO: why do we need this foreach?
                 foreach (int i in Enum.GetValues(typeof(DirectionToSum)))
                 {
+                    // TODO: == false, == true is redundant in conditions.
+                    // TODO: if (!Enum.IsDefined(typeof(DirectionToSum), value))
                     if (Enum.IsDefined(typeof(DirectionToSum), value) == false)
                     {
                         Program.GetErrorMessage();
@@ -84,6 +91,7 @@ namespace SecondTask
                     Program.GetErrorMessage();
                     continue;
                 }
+                // TODO: same as previous questions about enums
                 foreach (int i in Enum.GetValues(typeof(OperationOnNumbers)))
                 {
                     if (Enum.IsDefined(typeof(OperationOnNumbers), operation) == false)
@@ -103,11 +111,15 @@ namespace SecondTask
 
                 Console.WriteLine("Press 'N/n' if you want to exit, otherwise the application will restart");
                 var answer = Console.ReadLine();
+                // TODO: for strings is good practice to compare them using string.Equals(), because it contains overloads to specify how we want to compare
+                // TODO: if (string.Equals(answer, "n", StringComparison.InvariantCultureIgnoreCase))
+                // TODO: Read more about StringComparison enum
                 if (answer.ToLower() == "n")
                 {
                     appIsRunning = false;
                 }
                 else
+                // TODO: if we use braces after "if" statement then better to use after "else"
                     Console.Clear();
             }
         }
