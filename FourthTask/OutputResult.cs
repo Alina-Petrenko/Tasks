@@ -56,6 +56,7 @@ namespace FourthTask
             int firstIndex = 0;
             int lastOneDimensionalArrayIndex = charOneDimensionalArray.Length - 1;
             int lastTwoDimensionalArrayIndex = charTwoDimensionalArray.Length - 1;
+
             var (charOneDimensionalArrayIndex, charOneDimensionalArrayTime) = _binarySearch.GetBinarySearchInOneDimensionalCharArray(charOneDimensionalArray, searchedCharValue, firstIndex, lastOneDimensionalArrayIndex);
             if (charOneDimensionalArrayIndex < 0)
             {
@@ -66,6 +67,7 @@ namespace FourthTask
                 var elapsedCharOneDimensionalArrayTime = charOneDimensionalArrayTime.ToString(@"mm\:ss\.FFFFFF");
                 Console.WriteLine($"Result from one dimensional char array: '{charOneDimensionalArray[charOneDimensionalArrayIndex]}' Index {charOneDimensionalArrayIndex}, Time: {elapsedCharOneDimensionalArrayTime} ");
             }
+
             var (charTwoDimensionalArrayRow, charTwoDimensionalArrayColumn, charTwoDimensionalArrayTime) = _binarySearch.GetBinarySearchInTwoDimensionalCharArray(charTwoDimensionalArray, searchedCharValue, firstIndex, lastTwoDimensionalArrayIndex);
             if (charTwoDimensionalArrayColumn < 0)
             {

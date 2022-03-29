@@ -25,6 +25,7 @@ namespace FourthTask
                     GetErrorMessage();
                     continue;
                 }
+
                 Console.Write("Rows of two-dimensional array: ");
                 resultOfParsing = int.TryParse(Console.ReadLine(), out var rows);
                 if (!resultOfParsing || (rows <= 0))
@@ -32,6 +33,7 @@ namespace FourthTask
                     GetErrorMessage();
                     continue;
                 }
+
                 Console.Write("Columns of two-dimensional array: ");
                 resultOfParsing = int.TryParse(Console.ReadLine(), out var columns);
                 if (!resultOfParsing || (columns <= 0))
@@ -74,9 +76,11 @@ namespace FourthTask
 
                 _outputResult.GetDecimalResultToConsole(decimalOneDimensionalArray, decimalTwoDimensionalArray, searchedDecimalValue);
                 _outputResult.GetCharResultToConsole(charOneDimensionalArray,charTwoDimensionalArray,searchedCharValue);
+
                 Console.WriteLine("______________________________________");
                 Console.WriteLine("Press 'N/n' if you want to exit, otherwise the application will restart");
                 var answer = Console.ReadLine();
+
                 if (string.Equals(answer, "n", StringComparison.InvariantCultureIgnoreCase))
                 {
                     appIsRunning = false;
