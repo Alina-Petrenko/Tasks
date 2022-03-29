@@ -1,19 +1,41 @@
-﻿
+﻿using System;
+using System.Diagnostics;
+
 namespace FourthTask
 {
+    /// <summary>
+    /// Provides a mechanism for binary searching inputed arrays 
+    /// </summary>
     public class BinarySearch
     {
-        public int GetBinarySearchInOneDimensionalDecimalArray(decimal[] array, decimal searchedValue, int firstIndex, int lastIndex)
+        private Stopwatch _oneDimentionalTime = new Stopwatch();
+        private Stopwatch _twoDimentionalTime = new Stopwatch();
+        private TimeSpan _timeSpan = new TimeSpan();
+
+        /// <summary>
+        /// Uses a binary search mechanism for getting index of searched Value from one dimensional decimal array
+        /// </summary>
+        /// <param name="array">Inputed one dimensional decimal array</param>
+        /// <param name="searchedValue">Searched value</param>
+        /// <param name="firstIndex">First index of array</param>
+        /// <param name="lastIndex">Last index  of array</param>
+        /// <returns>Returns tuple, first value is required index, second value is elapsed time in TimeSpan type</returns>
+        public (int, TimeSpan) GetBinarySearchInOneDimensionalDecimalArray(decimal[] array, decimal searchedValue, int firstIndex, int lastIndex)
         {
+            _oneDimentionalTime.Start();
             var middleIndex = (firstIndex + lastIndex) / 2;
             if (firstIndex > lastIndex)
             {
-                return -1;
+                _oneDimentionalTime.Stop();
+                _timeSpan = _oneDimentionalTime.Elapsed;
+                return (-1, _timeSpan);
             }
 
             if (array[middleIndex].Equals(searchedValue))
             {
-                return middleIndex;
+                _oneDimentionalTime.Stop();
+                _timeSpan = _oneDimentionalTime.Elapsed;
+                return (middleIndex, _timeSpan);
             }
             else if
                 (searchedValue > array[middleIndex])
@@ -26,19 +48,32 @@ namespace FourthTask
                 lastIndex = middleIndex - 1;
                 return GetBinarySearchInOneDimensionalDecimalArray(array, searchedValue, firstIndex, lastIndex);
             }
-
+            
         }
-        public int GetBinarySearchInOneDimensionalCharArray(char[] array, char searchedValue, int firstIndex, int lastIndex)
+
+        /// <summary>
+        /// Uses a binary search mechanism for getting index of searched Value from one dimensional char array
+        /// </summary>
+        /// <param name="array">Inputed one dimensional char array</param>
+        /// <param name="searchedValue">Searched value</param>
+        /// <param name="firstIndex">First index of array</param>
+        /// <param name="lastIndex">Last index  of array</param>
+        /// <returns>Returns tuple, first value is required index, second value is elapsed time in TimeSpan type</returns>
+        public (int, TimeSpan) GetBinarySearchInOneDimensionalCharArray(char[] array, char searchedValue, int firstIndex, int lastIndex)
         {
             var middleIndex = (firstIndex + lastIndex) / 2;
             if (firstIndex > lastIndex)
             {
-                return -1;
+                _oneDimentionalTime.Stop();
+                _timeSpan = _oneDimentionalTime.Elapsed;
+                return (-1, _timeSpan);
             }
 
             if (array[middleIndex].Equals(searchedValue))
             {
-                return middleIndex;
+                _oneDimentionalTime.Stop();
+                _timeSpan = _oneDimentionalTime.Elapsed;
+                return (middleIndex, _timeSpan);
             }
             else if
                 (searchedValue > array[middleIndex])
@@ -52,19 +87,32 @@ namespace FourthTask
                 return GetBinarySearchInOneDimensionalCharArray(array, searchedValue, firstIndex, lastIndex);
             }
         }
-        public (int, int) GetBinarySearchInTwoDimensionalDecimalArray(decimal[,] array, decimal searchedValue, int firstIndex, int lastIndex)
+        /// <summary>
+        /// Uses a binary search mechanism for getting index of searched Value from two dimensional decimal array
+        /// </summary>
+        /// <param name="array">Inputed two dimensional decimal array</param>
+        /// <param name="searchedValue">Searched value</param>
+        /// <param name="firstIndex">First index of array</param>
+        /// <param name="lastIndex">Last index  of array</param>
+        /// <returns>Returns tuple, first value is required row index, second value is required column index, third value is elapsed time in TimeSpan type</returns>
+        public (int, int, TimeSpan) GetBinarySearchInTwoDimensionalDecimalArray(decimal[,] array, decimal searchedValue, int firstIndex, int lastIndex)
         {
+            _twoDimentionalTime.Start();
             var columnsSize = array.GetLength(1);
-            var middleRowIndex = ((firstIndex + lastIndex) /2)/columnsSize;
-            var middleColumnsIndex = (columnsSize - 1) / 2; 
+            var middleRowIndex = ((firstIndex + lastIndex) / 2) / columnsSize;
+            var middleColumnsIndex = (columnsSize - 1) / 2;
             if (firstIndex > lastIndex)
             {
-                return (-1, -1);
+                _twoDimentionalTime.Stop();
+                _timeSpan = _twoDimentionalTime.Elapsed;
+                return (-1, -1, _timeSpan);
             }
 
             if (array[middleRowIndex, middleColumnsIndex].Equals(searchedValue))
             {
-                return (middleRowIndex, middleColumnsIndex);
+                _twoDimentionalTime.Stop();
+                _timeSpan = _twoDimentionalTime.Elapsed;
+                return (middleRowIndex, middleColumnsIndex, _timeSpan);
             }
             else if (searchedValue < array[middleRowIndex, 0])
             {
@@ -86,36 +134,59 @@ namespace FourthTask
                 }
                 firstIndex = 0;
                 lastIndex = columnsSize - 1;
-                var index = GetBinarySearchInOneDimensionalDecimalArray(newArray, searchedValue, firstIndex, lastIndex);
-                return (middleRowIndex, index);
+                var (index, _) = GetBinarySearchInOneDimensionalDecimalArray(newArray, searchedValue, firstIndex, lastIndex);
+                _twoDimentionalTime.Stop();
+                _timeSpan = _twoDimentionalTime.Elapsed;
+                return (middleRowIndex, index, _timeSpan);
             }
-            
+
             else if (searchedValue == array[middleRowIndex, 0] || searchedValue == array[middleRowIndex, columnsSize - 1])
             {
                 if (searchedValue == array[middleRowIndex, 0])
                 {
-                    return (middleRowIndex, 0);
+                    _twoDimentionalTime.Stop();
+                    _timeSpan = _twoDimentionalTime.Elapsed;
+                    return (middleRowIndex, 0, _timeSpan);
                 }
                 else
                 {
-                    return (middleRowIndex, columnsSize - 1);
+                    _twoDimentionalTime.Stop();
+                    _timeSpan = _twoDimentionalTime.Elapsed;
+                    return (middleRowIndex, columnsSize - 1, _timeSpan);
                 }
             }
-            return (-1, -1);
+            _twoDimentionalTime.Stop();
+            _timeSpan = _twoDimentionalTime.Elapsed;
+            return (-1, -1, _timeSpan);
         }
-        public (int, int) GetBinarySearchInTwoDimensionalCharArray(char[,] array, char searchedValue, int firstIndex, int lastIndex)
+
+        /// <summary>
+        /// Uses a binary search mechanism for getting index of searched Value from two dimensional char array
+        /// </summary>
+        /// <param name="array">Inputed two dimensional char array</param>
+        /// <param name="searchedValue">Searched value</param>
+        /// <param name="firstIndex">First index of array</param>
+        /// <param name="lastIndex">Last index  of array</param>
+        /// <returns>Returns tuple, first value is required row index, second value is required column index, third value is elapsed time in TimeSpan type</returns>
+
+        public (int, int, TimeSpan) GetBinarySearchInTwoDimensionalCharArray(char[,] array, char searchedValue, int firstIndex, int lastIndex)
         {
+            _twoDimentionalTime.Start();
             var columnsSize = array.GetLength(1);
             var middleRowIndex = ((firstIndex + lastIndex) / 2) / columnsSize;
             var middleColumnsIndex = (columnsSize - 1) / 2;
             if (firstIndex > lastIndex)
             {
-                return (-1, -1);
+                _twoDimentionalTime.Stop();
+                _timeSpan = _twoDimentionalTime.Elapsed;
+                return (-1, -1, _timeSpan);
             }
 
             if (array[middleRowIndex, middleColumnsIndex].Equals(searchedValue))
             {
-                return (middleRowIndex, middleColumnsIndex);
+                _twoDimentionalTime.Stop();
+                _timeSpan = _twoDimentionalTime.Elapsed;
+                return (middleRowIndex, middleColumnsIndex, _timeSpan);
             }
             else if (searchedValue < array[middleRowIndex, 0])
             {
@@ -137,22 +208,30 @@ namespace FourthTask
                 }
                 firstIndex = 0;
                 lastIndex = columnsSize - 1;
-                var index = GetBinarySearchInOneDimensionalCharArray(newArray, searchedValue, firstIndex, lastIndex);
-                return (middleRowIndex, index);
+                var (index, _) = GetBinarySearchInOneDimensionalCharArray(newArray, searchedValue, firstIndex, lastIndex);
+                _twoDimentionalTime.Stop();
+                _timeSpan = _twoDimentionalTime.Elapsed;
+                return (middleRowIndex, index,_timeSpan);
             }
 
             else if (searchedValue == array[middleRowIndex, 0] || searchedValue == array[middleRowIndex, columnsSize - 1])
             {
                 if (searchedValue == array[middleRowIndex, 0])
                 {
-                    return (middleRowIndex, 0);
+                    _twoDimentionalTime.Stop();
+                    _timeSpan = _twoDimentionalTime.Elapsed;
+                    return (middleRowIndex, 0, _timeSpan);
                 }
                 else
                 {
-                    return (middleRowIndex, columnsSize - 1);
+                    _twoDimentionalTime.Stop();
+                    _timeSpan = _twoDimentionalTime.Elapsed;
+                    return (middleRowIndex, columnsSize - 1, _timeSpan);
                 }
             }
-            return (-1, -1);
+            _twoDimentionalTime.Stop();
+            _timeSpan = _twoDimentionalTime.Elapsed;
+            return (-1, -1, _timeSpan);
         }
     }
 }
