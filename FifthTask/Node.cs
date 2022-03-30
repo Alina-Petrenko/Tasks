@@ -23,24 +23,24 @@ namespace FifthTask
         {
             if (node.Value < Value)
             {
-                if (LeftTree == null)
+                if (LeftTree != null)
                 {
-                    LeftTree = node;
+                    LeftTree.Add(node);
                 }
                 else
                 {
-                    LeftTree.Add(node);
+                    LeftTree = node;
                 }
             }
             else
             {
-                if (RightTree == null)
+                if (RightTree != null)
                 {
-                    RightTree = node;
+                    RightTree.Add(node);
                 }
                 else
                 {
-                    RightTree.Add(node);
+                    RightTree = node;
                 }
             }
         }
@@ -50,7 +50,7 @@ namespace FifthTask
         /// </summary>
         /// <param name="array">Empty list for sorting array</param>
         /// <returns>Returns Sorted array</returns>
-        public int[] ToSortedArray(List<int> array = null)
+        public int[] Traverse(List<int> array = null)
         {
             if (array == null)
             {
@@ -59,13 +59,13 @@ namespace FifthTask
 
             if (LeftTree != null)
             {
-                LeftTree.ToSortedArray(array);
+                LeftTree.Traverse(array);
             }
             array.Add(Value);
 
             if (RightTree != null)
             {
-                RightTree.ToSortedArray(array);
+                RightTree.Traverse(array);
             }
             return array.ToArray();
         }

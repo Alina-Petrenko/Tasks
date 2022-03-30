@@ -37,7 +37,7 @@ namespace FifthTask
             {
                 treeNode.Add(new Node(array[i]));
             }
-            return treeNode.ToSortedArray();
+            return treeNode.Traverse();
         }
     }
 }
