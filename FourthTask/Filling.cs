@@ -38,9 +38,21 @@ namespace FourthTask
         public char[] GetRandomCharOneDimensionalArray(int size)
         {
             char[] array = new char[size];
+            char[] charArray = { '(', ')', '{', '}', '+', '-', '_', '=', '\\', '/', '|', '&', '#', '%', '^', '&', '*' };
             for (int i = 0; i < size; i++)
             {
-                array[i] = (char)_random.Next('a', 'z');
+                int value = _random.Next(1, 3);
+                switch (value)
+                {
+                    case 1:
+                        array[i] = (char)_random.Next('a', 'z');
+                        break;
+                    case 2:
+                        array[i] = charArray[new Random().Next(0, charArray.Length)];
+                        break;
+                    default:
+                        break;
+                }
             }
             Array.Sort(array);
             for (int i = 0; i < size; i++)
@@ -89,11 +101,25 @@ namespace FourthTask
         public char[,] GetRandomCharTwoDimensionalArray(int rows, int columns)
         {
             char[,] array = new char[rows, columns];
+            char[] charArray = { '(', ')', '{', '}', '+', '-', '_', '=', '\\', '/', '|', '&', '#', '%', '^', '&', '*' };
             for (int i = 0; i < rows; i++)
             {
                 for (int j = 0; j < columns; j++)
                 {
-                    array[i, j] = (char)_random.Next('a', 'z');
+                    int value = _random.Next(1, 3);
+                    switch (value)
+                    {
+                        case 1:
+                            array[i, j] = (char)_random.Next('a', 'z');
+                            break;
+                        case 2:
+                            array[i, j] = charArray[new Random().Next(0, charArray.Length)];
+                            break;
+                        default:
+                            break;
+                    }
+
+
                 }
             }
             GetSortCharTwoDemensionalArray(array);
