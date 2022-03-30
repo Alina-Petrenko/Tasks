@@ -8,7 +8,7 @@
         /// <summary>
         /// Entry point into application
         /// </summary>
-        static void Main(string[] args)
+        static void Main()
         {
             var result = new OutputValue();
             result.GetInputValue();
