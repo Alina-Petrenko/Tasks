@@ -4,6 +4,7 @@ using System.Linq;
 namespace FourthTask
 {
     /// <summary>
+    /// TODO: not only numbers
     /// Provides ability to fill various arrays by random numbers
     /// </summary>
     public class Filling
@@ -34,6 +35,8 @@ namespace FourthTask
         /// Fills one dimensional array by random char numbers
         /// </summary>
         /// <param name="size">Size of array</param>
+        /// TODO: with random characters
+        /// TODO: here could be generated not only alphabet characters, number characters too.
         /// <returns>Returns one dimensional array with random numbers</returns>
         public char[] GetRandomCharOneDimensionalArray(int size)
         {
@@ -114,6 +117,7 @@ namespace FourthTask
         /// </summary>
         /// <param name="array">Inputed two dimensional decimal array</param>
         /// <returns>Returns sorted ascending two dimensional array</returns>
+        /// TODO: better to rename into SortArray()
         private decimal[,] GetSortDecimalTwoDemensionalArray(decimal[,] array)
         {
             var rows = array.GetLength(0);
@@ -135,6 +139,7 @@ namespace FourthTask
                     array[i, j] = newArray[i * columns + j];
                 }
             }
+            // TODO: we don't need to return array. It is reference type, it will be changed inside this method
             return array;
         }
 
@@ -143,6 +148,7 @@ namespace FourthTask
         /// </summary>
         /// <param name="array">Inputed two dimensional char array</param>
         /// <returns>Returns sorted ascending two dimensional array</returns>
+        /// TODO: better to rename into SortArray()
         private char[,] GetSortCharTwoDemensionalArray(char[,] array)
         {
             var rows = array.GetLength(0);

@@ -48,6 +48,7 @@ namespace FourthTask
         /// <summary>
         /// Writes results to the console from binary search in char arrays
         /// </summary>
+        /// TODO: params does not exists in method
         /// <param name="decimalOneDimensionalArray">Char One Dimensional Array</param>
         /// <param name="decimalTwoDimensionalArray">Char Two Dimensional Array</param>
         /// <param name="searchedDecimalValue">Searched Char Value</param>

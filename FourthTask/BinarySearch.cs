@@ -15,11 +15,14 @@ namespace FourthTask
         /// <summary>
         /// Uses a binary search mechanism for getting index of searched Value from one dimensional decimal array
         /// </summary>
+        /// TODO: it is rare case when need to say "inputed". Better to use present times in every places where it could be used.
+        /// TODO: in current case better to use "input".
         /// <param name="array">Inputed one dimensional decimal array</param>
         /// <param name="searchedValue">Searched value</param>
         /// <param name="firstIndex">First index of array</param>
         /// <param name="lastIndex">Last index  of array</param>
         /// <returns>Returns tuple with required index and spent time for calculations</returns>
+        /// TODO: better to rename into Find()
         public (int, TimeSpan) GetBinarySearchInOneDimensionalDecimalArray(decimal[] array, decimal searchedValue, int firstIndex, int lastIndex)
         {
             _oneDimentionalTime.Start();
@@ -37,6 +40,18 @@ namespace FourthTask
                 _timeSpan = _oneDimentionalTime.Elapsed;
                 return (middleIndex, _timeSpan);
             }
+            //TODO: could be rewritted as
+            /*
+                if (searchedValue > array[middleIndex])
+                {
+                    firstIndex = middleIndex + 1;
+                    return GetBinarySearchInOneDimensionalDecimalArray(array, searchedValue, firstIndex, lastIndex);
+                }
+
+                lastIndex = middleIndex - 1;
+                return GetBinarySearchInOneDimensionalDecimalArray(array, searchedValue, firstIndex, lastIndex);
+             */
+            //TODO: because in each if we have return.
             else if
                 (searchedValue > array[middleIndex])
             {
@@ -52,6 +67,8 @@ namespace FourthTask
         }
 
         /// <summary>
+        /// TODO: could be rephrased into
+        /// TODO: "Searches <paramref name="searchedValue"/> into <paramref name="array"/> using given boundary indexes <paramref name="firstIndex"/> and <paramref name="lastIndex"/>"
         /// Uses a binary search mechanism for getting index of searched Value from one dimensional char array
         /// </summary>
         /// <param name="array">Inputed one dimensional char array</param>
@@ -59,6 +76,7 @@ namespace FourthTask
         /// <param name="firstIndex">First index of array</param>
         /// <param name="lastIndex">Last index  of array</param>
         /// <returns>Returns tuple with required index and spent time for calculations</returns>
+        /// TODO: better to rename into Find()
         public (int, TimeSpan) GetBinarySearchInOneDimensionalCharArray(char[] array, char searchedValue, int firstIndex, int lastIndex)
         {
             var middleIndex = (firstIndex + lastIndex) / 2;
@@ -95,6 +113,7 @@ namespace FourthTask
         /// <param name="firstIndex">First index of array</param>
         /// <param name="lastIndex">Last index  of array</param>
         /// <returns>Returns tuple with two required indices and spent time for calculations</returns>
+        /// TODO: better to rename into Find()
         public (int, int, TimeSpan) GetBinarySearchInTwoDimensionalDecimalArray(decimal[,] array, decimal searchedValue, int firstIndex, int lastIndex)
         {
             _twoDimentionalTime.Start();
@@ -168,7 +187,7 @@ namespace FourthTask
         /// <param name="firstIndex">First index of array</param>
         /// <param name="lastIndex">Last index  of array</param>
         /// <returns>Returns tuple with two required indices and spent time for calculations</returns>
-
+        // TODO: better to rename into Find()
         public (int, int, TimeSpan) GetBinarySearchInTwoDimensionalCharArray(char[,] array, char searchedValue, int firstIndex, int lastIndex)
         {
             _twoDimentionalTime.Start();

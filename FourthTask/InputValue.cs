@@ -3,6 +3,7 @@
 namespace FourthTask
 {
     /// <summary>
+    /// TODO: Better to say "Provides functionality to get values from the user input"
     /// Provides a mechanism for getting values from the user
     /// </summary>
     public class InputValue
@@ -13,6 +14,8 @@ namespace FourthTask
         /// <summary>
         /// Gets values from user
         /// </summary>
+        // TODO: method did not satisfy internal functionality.
+        // Better to split it into several values
         public void GetInputedValue()
         {
             var appIsRunning = true;

@@ -10,6 +10,7 @@
         /// </summary>
         static void Main()
         {
+            // TODO: typo. correct is inputValue 
             var inpuredValue = new InputValue();
             inpuredValue.GetInputedValue();
         }
