@@ -16,7 +16,7 @@ namespace FifthTask
         /// </summary>
         /// <param name="array">One-dimensional array with random numbers</param>
         /// <returns>Returns spent time for calculations</returns>
-        public TimeSpan GetStartTreeSort(int[] array)
+        public (TimeSpan, int[]) GetStartTreeSort(int[] array)
         {
             _stopwatch.Start();
             var treeNode = new Node(array[0]);
@@ -24,10 +24,17 @@ namespace FifthTask
             {
                 treeNode.Add(new Node(array[i]));
             }
-            treeNode.Traverse();
+            // TODO: you need to get result and show it in console
+            // TODO: like this
+            var sortedArray = treeNode.Traverse();
             _stopwatch.Stop();
             _timeSpan = _stopwatch.Elapsed;
-            return _timeSpan;
+            return (_timeSpan, sortedArray);
+
+            //treeNode.Traverse();
+            //_stopwatch.Stop();
+            //_timeSpan = _stopwatch.Elapsed;
+            //return _timeSpan;
         }
     }
 }

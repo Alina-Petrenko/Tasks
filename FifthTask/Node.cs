@@ -50,6 +50,7 @@ namespace FifthTask
         /// </summary>
         /// <param name="array">Empty list for sorting array</param>
         /// <returns>Returns Sorted array</returns>
+        /// TODO: you can return a list too.
         public int[] Traverse(List<int> array = null)
         {
             if (array == null)

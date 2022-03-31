@@ -60,6 +60,8 @@ namespace FifthTask
         {
             var referenceNumber = array[indexFromLeft];
             var success = true;
+            // TODO: bad idea to use endless cycle
+            // TODO: Try to rewrite it without using while cycle
             while (success)
             {
                 while (array[indexFromRight] > referenceNumber)
@@ -85,6 +87,7 @@ namespace FifthTask
                     return indexFromRight;
                 }
             }
+            // TODO: we will never reach this part of code
             return 0;
         }
 

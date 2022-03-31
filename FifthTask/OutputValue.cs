@@ -5,6 +5,7 @@ namespace FifthTask
     /// <summary>
     /// Provides functionality to get values from the user input and output result to console
     /// </summary>
+    /// TODO: name of class say nothing about what is the purpose of it.
     public class OutputValue
     {
         private Random _random = new Random();
@@ -68,14 +69,23 @@ namespace FifthTask
             Console.WriteLine("");
             var elapsedQuickSortTime = quickSortTime.ToString(@"mm\:ss\.FFFFFF");
             Console.WriteLine($"\nQuick Sort Time: {elapsedQuickSortTime}");
-
+            // TODO: this part I changed
+            // TODO: you need to fill array with new values, because current array already sorted
+            Console.WriteLine($"\n______________________________________");
+            Console.WriteLine("\nUpdated Array: ");
+            for (int i = 0; i < size; i++)
+            {
+                array[i] = _random.Next(1, 101);
+                Console.Write($"{array[i]} ");
+            }
             Console.WriteLine($"______________________________________");
-            var treeSortTime = _treeSort.GetStartTreeSort(array);
+            // TODO: this part I changed
+            var (treeSortTime, sortedArray) = _treeSort.GetStartTreeSort(array);
             Console.WriteLine("");
             Console.WriteLine("Sorted Array by Tree sort: ");
             for (int i = 0; i < size; i++)
             {
-                Console.Write($"{array[i]} ");
+                Console.Write($"{sortedArray[i]} ");
             }
 
             Console.WriteLine("");
