@@ -18,7 +18,10 @@ namespace SixthTask
             var appIsRunning = true;
             while (appIsRunning)
             {
-                Console.WriteLine("Show all students - 1, \nFind student by name - 2, \nSort students by average score - 3, \nGroup by grade - 4, \nChange student - 5, \nGet average age - 6, \nExit - 7: ");
+                Console.WriteLine("Show all students - 1, \nFind student by name - 2, \nSort students by average score - 3, \nGroup by grade - 4, \nChange student - 5, \nGet average age - 6, \nExit - 7");
+                // TODO: Added code
+                Console.WriteLine("Make your choose (1-7)");
+                
                 var resultOfParsing = int.TryParse(Console.ReadLine(), out var operation);
                
                 if (!resultOfParsing || (operation <= 0) || (operation > 7))
@@ -30,6 +33,8 @@ namespace SixthTask
                 Console.WriteLine("");
                 switch (operation)
                 {
+                    // TODO: instead of using 1,2,3... 
+                    // TODO: it could be enum with proper named actions
                     case 1:
                         journal.GetToConcoleStudentArray();
                         Console.WriteLine("____________________________");
@@ -44,6 +49,7 @@ namespace SixthTask
                     case 3:
                         Console.Write("How do you want to sort: by ascending - 1, by descending - 2: ");
                         resultOfParsing = int.TryParse(Console.ReadLine(), out var sortDirection);
+                        // TODO: variable is not needed at all
                         var isSortByAscending = true;
                         if (!resultOfParsing || (sortDirection <= 0) || (sortDirection > 2))
                         {
@@ -52,22 +58,24 @@ namespace SixthTask
                         }
                         else if (sortDirection == 1)
                         {
-                            TimeSpan spentSortTime = journal.Sort(isSortByAscending);
+                            // TODO: updated code
+                            TimeSpan spentSortTime = journal.SortByAverageScore();
                             WriteSpentTimeToConsole(spentSortTime);
                             Console.WriteLine("____________________________");
                             break;
                         }
                         else
                         {
-                            isSortByAscending = false;
-                            TimeSpan spentSortTime =  journal.Sort(isSortByAscending);
+                            // TODO: updated code
+                            TimeSpan spentSortTime =  journal.SortByAverageScore(false);
                             WriteSpentTimeToConsole(spentSortTime);
                             Console.WriteLine("____________________________");
                             break;
                         }
                     case 4:
                         {
-                            TimeSpan spentGroupTime =  journal.Group();
+                            // TODO: updated code
+                            TimeSpan spentGroupTime =  journal.GroupByGrade();
                             WriteSpentTimeToConsole(spentGroupTime);
                             Console.WriteLine("____________________________");
                             break;
@@ -77,6 +85,9 @@ namespace SixthTask
                             journal.GetToConcoleStudentArray();
                             Console.Write("Write index of Student which you want to change: ");
                             resultOfParsing = int.TryParse(Console.ReadLine(), out var index);
+                            // TODO: don`t limit possible value by 10. Number of students could be changed in future.
+                            // TODO: better to write like this:
+                            // if (!resultOfParsing || index <= 0 || index > journal.CountOfStudents - 1)
                             if (!resultOfParsing || (index <= 0) || (index > 10))
                             {
                                 GetErrorMessage();

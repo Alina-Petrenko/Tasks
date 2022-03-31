@@ -5,6 +5,7 @@ using System.Diagnostics;
 namespace SixthTask
 {
     /// <summary>
+    /// TODO: wrong summary
     /// Provides functionality for modifying and interacting with an array
     /// </summary>
     public class Journal
@@ -12,6 +13,12 @@ namespace SixthTask
         private Student[] _students = new Student[10];
         private Stopwatch _stopwatch = new Stopwatch();
         private TimeSpan _time = new TimeSpan();
+
+        // TODO: added property
+        /// <summary>
+        /// Count of students in journal
+        /// </summary>
+        public int CountOfStudents => _students.Length;
 
         /// <summary>
         /// Fills empty array with elements
@@ -54,15 +61,19 @@ namespace SixthTask
         /// <summary>
         /// Writes array to console
         /// </summary>
+        /// TODO: typo "Console"
         public void GetToConcoleStudentArray()
         {
             for (int i = 0; i < _students.Length; i++)
             {
+                Console.WriteLine("Concole");
+                // TODO: typo "Grade"
                 Console.WriteLine($"№ {i + 1}. Name: {_students[i].Info.fullName}, Age: {_students[i].Info.age}, Grage: {_students[i].Info.grade}, Score: {_students[i].Info.averageScore}");
             }
         }
 
         /// <summary>
+        /// TODO: "Tries to find student by name and output "
         /// Finds value in the array
         /// </summary>
         /// <param name="inputName">Value to find in the array</param>
@@ -71,11 +82,28 @@ namespace SixthTask
         {
             _stopwatch.Start();
             var studentIsFounded = false;
+
+            // TODO: Could be foreach loop
+            /*
+             * foreach (var student in _students)
+               {
+                var fullName = student.Info.fullName.Split(" ");
+                var firstName = fullName[0];
+                var secondName = fullName[1];
+                if (student.Info.fullName.Equals(inputName) || firstName.Equals(inputName) || secondName.Equals(inputName))
+                {
+                    Console.WriteLine("Student has founded!");
+                    Console.WriteLine($"Name: {student.Info.fullName}, Age: {student.Info.age}, Grage: {student.Info.grade}, Score: {student.Info.averageScore}");
+                    studentIsFounded = true;
+                }
+               }
+             */
             for (int i = 0; i < _students.Length; i++)
             {
                 var fullName = _students[i].Info.fullName.Split(" ");
                 var firstName = fullName[0];
                 var secondName = fullName[1];
+                // TODO: what if there are several students with the same name?
                 if (_students[i].Info.fullName.Equals(inputName) || firstName.Equals(inputName) || secondName.Equals(inputName))
                 {
                     Console.WriteLine("Student has founded!");
@@ -121,6 +149,32 @@ namespace SixthTask
             return _time;
         }
 
+        // TODO: another version of Sort()
+        // TODO: please, look on it.
+        /// <summary>
+        /// Sorts students by average score using order defined in <paramref name="byAscending"/>.
+        /// </summary>
+        /// <param name="byAscending">Direction of sorting.</param>
+        /// <returns>Returns the time spent on sorting.</returns>
+        public TimeSpan SortByAverageScore(bool byAscending = true)
+        {
+            _stopwatch.Start();
+
+            var sortedStudents = byAscending
+                ? _students.OrderBy(s => s.Info.averageScore)
+                : _students.OrderByDescending(s => s.Info.averageScore);
+            foreach (var student in sortedStudents)
+            {
+                Console.WriteLine($"Name: {student.Info.fullName}, Age: {student.Info.age}, Grade: {student.Info.grade}, Score: {student.Info.averageScore}");
+            }
+
+            _stopwatch.Stop();
+            _time = _stopwatch.Elapsed;
+            _stopwatch.Reset();
+
+            return _time;
+        }
+
         /// <summary>
         /// Groups students according to grade
         /// </summary>
@@ -140,6 +194,33 @@ namespace SixthTask
             return _time;
         }
 
+        // TODO: another version of Group()
+        // TODO: please, look on it.
+        /// <summary>
+        /// Groups students according to grade
+        /// </summary>
+        /// <returns>Returns the time spent on calculations</returns>
+        public TimeSpan GroupByGrade()
+        {
+            _stopwatch.Start();
+
+            // TODO: read more about IGrouping<K,T> here: https://mtaulty.com/2007/09/28/m_9836/
+            foreach (var studentsGroup in _students.GroupBy(s => s.Info.grade))
+            {
+                Console.WriteLine($"Grade: {studentsGroup.Key}");
+                foreach (var student in studentsGroup)
+                {
+                    Console.WriteLine($"Name: {student.Info.fullName}, Age: {student.Info.age}, Grade: {student.Info.grade}, Score: {student.Info.averageScore}");
+                }
+            }
+
+            _stopwatch.Stop();
+            _time = _stopwatch.Elapsed;
+            _stopwatch.Reset();
+
+            return _time;
+        }
+
         /// <summary>
         /// Changes an array element by <paramref name="index"/>
         /// </summary>
@@ -151,7 +232,8 @@ namespace SixthTask
             var isChangeStudent = true;
             while (isChangeStudent)
             {
-                Console.Write("Print what you want to change: 1 - full name, 2 - age, 3 - grade, 4 - average score, 5 - want to exit: ");
+                Console.WriteLine("Options what you can change: 1 - full name, 2 - age, 3 - grade, 4 - average score, 5 - want to exit");
+                Console.WriteLine("Make your choose (1-5):");
                 var resultOfParsing = int.TryParse(Console.ReadLine(), out var value);
                 if (!resultOfParsing || (value <= 0) || (value > 5))
                 {
@@ -220,6 +302,7 @@ namespace SixthTask
             {
                 averageAge += _students[i].Info.age;
             }
+            // TODO: what if we don`t have any student in collection?
             averageAge /= _students.Length;
             Console.WriteLine($"Average age is: {averageAge}");
             _stopwatch.Stop();
